@@ -59,10 +59,12 @@ alias zoo-code-run='$SCRIPTS_PATH/remote-run.sh $ZOO_USR $ZOO_HOST ${ZOO_HOME}/c
 alias grep='grep --color'
 alias p='ping 8.8.8.8'
 alias ls='ls -G'
+alias lal='ls -al'
 alias ip='ifconfig | grep "inet " | grep -v 127.0.0.1'
 alias ='clear'
 
 # dotfile stuff
+# TODO: update these aliases to open and source dotfiles in new $DOTFILES directory
 alias bashrc='vim $HOME/.bashrc && source $HOME/.bashrc'
 alias bash_prof='vim $HOME/.bash_profile && source $HOME/.bash_profile'
 alias prompt='vim $HOME/.bash_prompt && source $HOME/.bash_prompt'
