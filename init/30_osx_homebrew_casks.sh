@@ -1,6 +1,10 @@
 # OSX-only stuff. Abort if not OSX.
 is_osx || return 1
 
+# TODO: set up with own cask list, return early until
+# TODO: wtf is a cask tho?
+return 1
+
 # Exit if Homebrew is not installed.
 [[ ! "$(type -P brew)" ]] && e_error "Brew casks need Homebrew to install." && return 1
 
