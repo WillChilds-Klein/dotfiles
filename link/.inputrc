@@ -1,0 +1,26 @@
+# Show all completions as soon as I press tab, even if there's more than one
+#set show-all-if-ambiguous on
+
+# Ignore case
+set completion-ignore-case on
+
+set editing-mode vi
+
+$if mode=vi
+    ##########################################################
+    # Keymaps for when we're in command mode (e.g., after hitting ESC)
+    set keymap vi-command
+    
+    ###########################################################
+    # Keymaps for when we're in insert (i.e., typing stuff in) mode
+    set keymap vi-insert
+    
+    # for Ctrl+l clear screen
+    "\C-l": "\e\C-la"
+
+    # map "jk" to exit insert mode
+    "jk": vi-movement-mode 
+
+    # allow cursor to go one past end of line
+    set virtualedit=onemore
+$endif

@@ -59,7 +59,7 @@ alias zoo-code-run='$SCRIPTS_PATH/remote-run.sh $ZOO_USR $ZOO_HOST ${ZOO_HOME}/c
 alias grep='grep --color'
 alias p='ping 8.8.8.8'
 alias ls='ls -G'
-alias lal='ls -al'
+alias la='ls -al'
 alias ip='ifconfig | grep "inet " | grep -v 127.0.0.1'
 alias ='clear'
 
