@@ -10,7 +10,7 @@ export GOPATH=$CODE/go
 export PATH=/bin:/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:$PATH
 export PATH=$GOPATH/bin:$PATH
 
-# default application environment variables
+# default application env variables
 export VISUAL=vim
 export EDITOR='vim -e'
 export PAGER=less

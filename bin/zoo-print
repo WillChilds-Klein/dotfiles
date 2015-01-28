@@ -1,0 +1,29 @@
+#!/bin/bash
+
+FILENAME=$1
+PRINTER=$2
+TMPDIR=$ZOO_HOME/print-temp-$RANDOM
+
+if [[ $FILENAME == "" ]] ; then
+    echo "usage: FILENAME [PRINTER]"
+    exit 1
+elif [[ $FILENAME == "--status" ]] ; then 
+    if [[ $PRINTER == "zoo2" ]] ; then
+        ssh $ZOO_USR@$ZOO_HOST "lpq -P zoo2"
+        exit 0
+    else
+        ssh $ZOO_USR@$ZOO_HOST "lpq -P zoo1"
+        exit 0
+    fi
+elif [ ! -f $FILENAME ] ; then
+    echo "file not found: $FILENAME"
+    exit 1
+elif [[ $PRINTER == "" ]] ; then
+    PRINTER="zoo1"
+fi
+
+ssh $ZOO_USR@$ZOO_HOST "echo TEMPDIR: $TMPDIR && mkdir $TMPDIR"
+scp -r $1 $ZOO_USR@$ZOO_HOST:$TMPDIR
+FILENAME=$(basename $FILENAME)
+ssh $ZOO_USR@$ZOO_HOST "cd $TMPDIR && lpr -P $PRINTER $FILENAME ; rm -rf $TMPDIR"
+

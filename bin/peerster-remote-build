@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ssh wdc22@node.zoo.cs.yale.edu "cd /home/accts/wdc22/cs426/peerster && ./build.sh"

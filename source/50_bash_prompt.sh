@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 # Modification of:
 # Sexy bash prompt by twolfson
 # https://github.com/twolfson/sexy-bash-prompt

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+STATUS=$(blueutil status)
+ON="Status: on"
+OFF="Status: off"
+ERR="BLUEUTIL ERROR"
+
+if [[ $STATUS == $ON ]]; then
+    blueutil off
+elif [[ $STATUS == $OFF ]]; then
+    blueutil on
+else
+    cat $ERR
+fi

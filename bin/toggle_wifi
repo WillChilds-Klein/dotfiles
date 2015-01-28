@@ -1,0 +1,5 @@
+#!/bin/bash
+
+[[ "$(networksetup -getairportpower en0)" == *On ]] && v=off || v=on
+
+networksetup -setairportpower en0 $v

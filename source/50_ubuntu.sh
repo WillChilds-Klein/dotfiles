@@ -1,6 +1,11 @@
 # Ubuntu-only stuff. Abort if not Ubuntu.
 is_ubuntu || return 1
 
+
+# ============================================================================ #
+# will's ubuntu stuff
+# ---------------------------------------------------------------------------- #
+
 # TODO: figure out what all this shit does. until then, exit early
 return 1
 
@@ -9,6 +14,11 @@ alias update="sudo apt-get -qq update && sudo apt-get upgrade"
 alias install="sudo apt-get install"
 alias remove="sudo apt-get remove"
 alias search="apt-cache search"
+
+
+# ============================================================================ #
+# stuff from https://github.com/cowboy/dotfiles/blob/master/source/50_ubuntu.sh
+# ---------------------------------------------------------------------------- #
 
 # Make 'less' more.
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"

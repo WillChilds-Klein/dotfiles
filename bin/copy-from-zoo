@@ -1,0 +1,3 @@
+#!/bin/bash
+
+scp ${ZOO_USR}@${ZOO_HOST}:${1} ${2} 
