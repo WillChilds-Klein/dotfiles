@@ -18,12 +18,12 @@ alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias alert='terminal-notifier -message $1'
 
 # wireless hardware toggling
-alias bt='$SCRIPTS_PATH/toggle_bluetooth.sh'
-alias tb='bt'
-alias br='bt && bt'
-alias wt='$SCRIPTS_PATH/toggle_wifi.sh'
-alias tw='wt'
-alias wr='wt && wt'
+alias bt='toggle_bluetooth'
+alias tb='toggle_bluetooth'
+alias br='toggle_bluetooth && toggle_bluetooth'
+alias wt='toggle_wifi'
+alias tw='toggle_wifi'
+alias wr='toggle_wifi && toggle_wifi'
 
 # alias for MAC address spoofing script
 alias spoof='wt && sudo spoof-mac.py randomize en0'
