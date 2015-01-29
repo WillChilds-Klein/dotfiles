@@ -26,6 +26,7 @@ alias desk='cd $HOME/Desktop'
 alias classes='cd $HOME/work/classes'
 alias cnh='cd $CODE/cnh/'
 alias downloads='cd $HOME/Downloads'
+alias dotf='cd $DOTFILES'
 
 # dotfile editing and immediate sourcing/updating
 alias gen='vim $DOTFILES/source/.50_general.sh && src'
