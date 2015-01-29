@@ -1,6 +1,6 @@
 # Dotfiles
 
-My dotfiles.
+This repository represents my dotfiles stuff integrated with the great work done by [Ben Alman](https://github.com/cowboy). I added my stuff, and kept that of his which I liked (a lot, including 95% of this README) from his original repository, which can be found [here](https://github.com/cowboy/dotfiles/).
 
 ## How the "dotfiles" command works
 
@@ -27,7 +27,7 @@ Scripts in the `/init` subdirectory will be executed. A whole bunch of things wi
 ### Other subdirectories
 
 * The `/backups` directory gets created when necessary. Any files in `~/` that would have been overwritten by files in `/copy` or `/link` get backed up there.
-* The `/bin` directory contains executable shell scripts (including the [dotfiles][dotfiles] script) and symlinks to executable shell scripts. This directory is added to the path.
+* The `/bin` directory contains executable shell scripts (including the [dotfiles](bin/dotfiles) script) and symlinks to executable shell scripts. This directory is added to the path.
 * The `/caches` directory contains cached files, used by some scripts or functions.
 * The `/source` directory contains files that are sourced whenever a new shell is opened (in alphanumeric order, hence the funky names).
 
