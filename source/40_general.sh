@@ -23,12 +23,17 @@ alias ='clear'
 
 # function to report exit status of previous command
 function status() {
+    local status=$?
+    local red='\033[0;31m'
+    local green='\033[0;32m'
+    local none='\033[0m'
     local exit_status
-    if [ "$?" -eq "0" ]; then
-        exit_status=OK
+
+    if [ "$status" -eq "0" ]; then
+        exit_status=${green}OK${none};
     else
-        exit_status=FAIL
+        exit_status=${red}FAIL${none};
     fi
 
-    echo "EXIT STATUS: $exit_status"
+    printf "EXIT STATUS: $exit_status\n"
 }
