@@ -7,3 +7,10 @@
 	required = true
 	clean = git media clean %f
 	smudge = git media smudge %f
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = true
+    pager = true
