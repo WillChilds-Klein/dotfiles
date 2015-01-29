@@ -16,6 +16,7 @@ alias showDotfiles='defaults write com.apple.finder AppleShowAllFiles TRUE && ki
 alias hideDotfiles='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias alert='terminal-notifier -message $1'
+alias copy='pbcopy'
 
 # wireless hardware toggling
 alias bt='toggle_bluetooth'
