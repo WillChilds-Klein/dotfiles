@@ -13,7 +13,7 @@ function gcomp() {
     fi
 
     git add --all &&
-    git commit -m "\'$msg\'" &&
+    git commit -m "'$msg'" &&
     shift 1 &&
     git push $@ ; status
 }
