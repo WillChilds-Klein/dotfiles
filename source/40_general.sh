@@ -20,4 +20,4 @@ alias grep='grep --color'
 alias p='ping 8.8.8.8'
 alias ip='ifconfig | grep "inet " | grep -v 127.0.0.1'
 alias ='clear'
-alias report='echo $?'
+alias report='echo "exit status: $?"'
