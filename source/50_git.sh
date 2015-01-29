@@ -14,7 +14,8 @@ function gcomp() {
 
     git add --all &&
     git commit -m "'$msg'" &&
-    shift 1 &&
-    
+    if [ "$#" -eq "0" ]; then
+        shift 1;
+    fi &&    
     git push $@ ; status
 }
