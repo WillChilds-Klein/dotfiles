@@ -13,7 +13,7 @@ function gcomp() {
     fi
 
     git add --all &&
-    git commit -m "'$msg'" &&
+    git commit -m "$msg" &&
     if [ ! "$#" -eq "0" ]; then
         shift 1;
     fi
