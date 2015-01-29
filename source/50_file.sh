@@ -12,12 +12,27 @@ fi
 alias la='ls -al'
 alias l='ls -al'
 
-# output graphical representation of file tree with root ./ to console
-alias ftree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'" 
+# Directory listing
+if [[ "$(type -P tree)" ]]; then
+  alias ll='tree --dirsfirst -aLpughDFiC 1'
+  alias lsd='ll -d'
+else
+  alias ll="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
+fi
 
-# filesystem nav
+# File size
+alias fs="stat -f '%z bytes'"
+alias df="df -h"
+
+# Recursively delete `.DS_Store` files
+alias dsstore="find . -name '*.DS_Store' -type f -ls -delete"
+
+# shorthand filesystem nav
 alias ..='cd ..'
-alias back='cd -'
+alias ...='cd ../..'
+alias -- -='cd -'
+
+# specific directory aliases
 alias home='cd $HOME'
 alias code='cd $CODE'
 alias tools='cd $TOOLS'

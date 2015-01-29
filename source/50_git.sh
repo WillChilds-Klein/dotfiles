@@ -1,7 +1,20 @@
 # aliases etc. for Git
 
-alias gstat='git status'
-alias gdiff='git diff $1 $2'
+alias gstat='git status $@'
+alias gdiff='git diff $@'
 alias gcom='git commit -am $1'
-alias gpush='git push $1 $2'
-# alias gcomp='git commit -am $1 && git push'
+alias gpush='git push $@'
+
+function gcomp() {
+    local msg=$1
+    if [ "$#" -eq "0" ]; then
+        echo "no message specified, using default commit message"
+        local msg="[auto-generated commit msg from $HOSTNAME]"
+    fi
+
+    git add --all &&
+    git commit -m "$msg" &&
+    shift 1 &&
+
+    git push $@
+}
