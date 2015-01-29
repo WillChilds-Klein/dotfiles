@@ -1,9 +1,9 @@
 # aliases etc. for Git
 
-alias gstat='git status $@'
-alias gdiff='git diff $@'
-alias gcom='git commit -am $1'
-alias gpush='git push $@'
+alias gstat="git status $@"
+alias gdiff="git diff $@"
+alias gcom="git commit -am $1"
+alias gpush="git push $@"
 
 function gcomp() {
     local msg="$1"
@@ -14,8 +14,9 @@ function gcomp() {
 
     git add --all &&
     git commit -m "'$msg'" &&
-    if [ "$#" -eq "0" ]; then
+    if [ ! "$#" -eq "0" ]; then
         shift 1;
-    fi &&    
+    fi
+
     git push $@ ; status
 }
