@@ -14,6 +14,5 @@ function gcomp() {
 
     git add --all &&
     git commit -m "$msg" &&
-    shift 1 &&
     git push $@ ; report
 }
