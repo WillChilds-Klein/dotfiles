@@ -35,6 +35,9 @@ Plugin 'twilight256.vim'
 " fake-clip for accessing clipboard on OS-X
 Plugin 'kana/vim-fakeclip'
 
+" vim-go for go stuff
+Plugin 'fatih/vim-go'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -101,3 +104,7 @@ nnoremap <C-H> <C-W><C-H>
 
 set splitbelow
 set splitright
+
+" in-vim cmd to edit vimrc, then source on save/close
+map <leader>vimrc :tabe ~/.vimrc<cr>
+autocmd bufwritepost .vimrc source $MYVIMRC

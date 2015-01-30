@@ -30,7 +30,8 @@ alias dsstore="find . -name '*.DS_Store' -type f -ls -delete"
 # shorthand filesystem nav
 alias ..='cd ..'
 alias ...='cd ../..'
-alias -- -='cd -'
+alias bk='cd -'
+alias ..l='cd .. && ll'
 
 # specific directory aliases
 alias home='cd $HOME'
@@ -44,7 +45,14 @@ alias downloads='cd $HOME/Downloads'
 alias dotf='cd $DOTFILES'
 
 # dotfile editing and immediate sourcing/updating
-alias gen='vim $DOTFILES/source/.50_general.sh && src'
-alias prompt='vim $DOTFILES/source/.50_bash_prompt.sh && src'
-alias inputrc='vim $DOTFILES/link/.inputrc && dotfiles'
-alias vimrc='vim $DOTFILES/link/.vimrc && dotfiles'
+alias srcgen='vim $DOTFILES/source/40_general.sh && src'
+alias srcfile='vim $DOTFILES/source/50_file.sh && src'
+alias srcprompt='vim $DOTFILES/source/50_bash_prompt.sh && src'
+alias srcgit='vim $DOTFILES/source/50_git.sh && src'
+alias srcosx='vim $DOTFILES/source/50_osx.sh && src'
+alias srclinux='vim $DOTFILES/source/50_linux.sh && src'
+alias srcubuntu='vim $DOTFILES/source/50_ubuntu.sh && src'
+
+# edit rc files. 
+alias inputrc='vim $DOTFILES/link/.inputrc'
+alias vimrc='vim $DOTFILES/link/.vimrc'
