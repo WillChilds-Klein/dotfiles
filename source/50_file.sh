@@ -36,13 +36,15 @@ alias ..l='cd .. && ll'
 # specific directory aliases
 alias home='cd $HOME'
 alias code='cd $CODE'
-alias tools='cd $TOOLS'
+alias tools='cd $TOOLS && ll'
 alias scripts='cd $SCRIPTS'
 alias desk='cd $HOME/Desktop'
-alias classes='cd $HOME/work/classes'
+alias classes='cd $HOME/work/classes && ll'
 alias cnh='cd $CODE/cnh/'
 alias downloads='cd $HOME/Downloads'
-alias dotf='cd $DOTFILES'
+alias dotf='cd $DOTFILES && ll'
+alias godir='cd $GOPATH/ && ll'
+alias dedis='cd $GOPATH/src/github.com/dedis && ll'
 
 # dotfile editing and immediate sourcing/updating
 alias srcgen='vim $DOTFILES/source/40_general.sh && src'
