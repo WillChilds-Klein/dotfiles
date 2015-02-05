@@ -20,7 +20,4 @@ $if mode=vi
 
     # map "jk" to exit insert mode
     "jk": vi-movement-mode 
-
-    # allow cursor to go one past end of line
-    set virtualedit=onemore
 $endif

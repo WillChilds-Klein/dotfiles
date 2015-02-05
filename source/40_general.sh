@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # general varibales, aliases, etc
 
 # set directory location vars
@@ -20,6 +22,10 @@ alias grep='grep --color'
 alias p='ping 8.8.8.8'
 alias ip='ifconfig | grep "inet " | grep -v 127.0.0.1'
 alias ='clear'
+
+# append to the Bash history file, rather than overwriting it
+shopt -s histappend
+
 
 # function to report exit status of previous command
 function status() {
