@@ -9,7 +9,11 @@ return 1
 [[ ! "$(type -P brew)" ]] && e_error "Brew casks need Homebrew to install." && return 1
 
 # Ensure the cask keg and recipe are installed.
-kegs=(caskroom/cask)
+kegs=(
+  caskroom/cask
+  # from Will, uncomment to get
+  # caskroom/versions
+)
 brew_tap_kegs
 recipes=(brew-cask)
 brew_install_recipes
@@ -70,6 +74,8 @@ casks=(
   # Color pickers
   colorpicker-developer
   colorpicker-skalacolor
+  # from Will, uncomment to get
+  # sublime-text3
 )
 
 # Install Homebrew casks.

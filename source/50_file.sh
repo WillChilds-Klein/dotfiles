@@ -21,7 +21,7 @@ else
 fi
 
 # File size
-alias fs="stat -f '%z bytes'"
+alias fsize="stat -f '%z bytes'"
 alias df="df -h"
 
 # Recursively delete `.DS_Store` files
