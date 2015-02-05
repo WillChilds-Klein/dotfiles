@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# TODO: make this a -d option for zoo-print script....
+
+if [ $# -eq 0 ]; then
+    echo "please specify >= 1 directories to print"
+fi
+
+for dir in "$@"; do
+    if [ -d "$dir" ]; then
+        echo "printing all PDF's in $dir"
+        for file in "$dir"/*.pdf; do
+            printf "\t printing %s" "$file"
+            zoo-print "$file"
+        done
+    else
+        echo "WARNING: dirname $dir is not valid"
+    fi
+done
