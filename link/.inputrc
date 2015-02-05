@@ -11,6 +11,9 @@ $if mode=vi
     # Keymaps for when we're in command mode (e.g., after hitting ESC)
     set keymap vi-command
     
+    # map "a" to same function as "A"
+    "a": vi-append-eol
+
     ###########################################################
     # Keymaps for when we're in insert (i.e., typing stuff in) mode
     set keymap vi-insert

@@ -1,4 +1,4 @@
-" =============== Vundle =============== "
+" 'K=============== Vundle =============== "
 set nocompatible              " be iMproved, reqquired
 filetype off                  " required
 
@@ -22,7 +22,7 @@ call vundle#begin()
 " Pass the path to set the runtimepath properly.
 " > Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Avoid a name conflict with L9
-" > Plugin 'user/L9', {'name': 'newL9'}
+" > Plugin 'user/L9', {6F'name': 'newL9'}
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -65,6 +65,33 @@ let g:syntastic_check_on_wq = 0
 
 
 " =============== General .vimrc stuff ================ "
+
+" use the OS clipboard by default (on versions compiled with `+clipboard`)
+set clipboard=unnamed
+" Optimize for fast terminal connections
+set ttyfast
+" Highlight dynamically as pattern is typed
+set incsearch
+" Make tabs as wide as two spaces
+set tabstop=2
+" Show “invisible” characters
+set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+set list
+" Highlight searches
+set hlsearch
+" Ignore case of searches
+set ignorecase
+" Disable error bells
+set noerrorbells
+" Start scrolling three lines before the horizontal window border
+set scrolloff=3
+" Show the filename in the window titlebar
+set title
+" Don’t reset cursor to start of line when moving around.
+set nostartofline
+" Enable line numbers
+set number
+
 :set ruler
 
 set smartindent
@@ -78,8 +105,6 @@ colorscheme twilight256
 if has("mouse")
     set mouse=a
 endif
-
-set clipboard=unnamed
 
 " map 'jk' to <Esc>
 :imap jk <Esc>
@@ -97,8 +122,7 @@ nnoremap <unique> : ;
 
 " highlight search results
 set hlsearch
-" <Ctrl-l> redraws the screen and removes any search highlighting.
-nnoremap <silent> <C-l> :nohl<CR><C-l>
+nnoremap jk :noh<return>jk
 
 " allow cursor to be one char past EOL
 set virtualedit=onemore 
@@ -107,8 +131,7 @@ set virtualedit=onemore
 set whichwrap+=<,>,h,l,[,]
 
 " set qq to ignore changes -> quit
-command Qq q!
-cabbrev qq Qq
+cabbrev qq q!
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
