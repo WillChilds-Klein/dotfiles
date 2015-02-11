@@ -15,7 +15,7 @@ defaults write com.sublimetext.3 ApplePressAndHoldEnabled -bool false
 alias showDotfiles='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
 alias hideDotfiles='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
-alias alert='terminal-notifier -message $1'
+alias alert='terminal-notifier -message'
 alias copy='pbcopy'
 
 # wireless hardware toggling
