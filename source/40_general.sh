@@ -30,7 +30,7 @@ alias ='clear'
 shopt -s histappend
 
 # fuzzy bash completion, src: http://superuser.com/a/607338
-fuzzy_cmds=(cd ls cat vim)
+fuzzy_cmds=(mv cp cd ls cat vim rm make)
 complete -o nospace -o filenames -F fuzzypath "${fuzzy_cmds[@]}"
 function fuzzypath() {
     if [ -z $2 ] 
