@@ -12,6 +12,9 @@ export GOPATH=$CODE/go
 export PATH=/bin:/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:$PATH
 export PATH=$GOPATH/bin:$PATH
 
+# general env variables
+export LOCALHOST='127.0.0.1'
+
 # default application env variables
 export VISUAL=vim
 export EDITOR='vim -e'
@@ -26,6 +29,20 @@ alias ='clear'
 # append to the Bash history file, rather than overwriting it
 shopt -s histappend
 
+# fuzzy bash completion, src: http://superuser.com/a/607338
+fuzzy_cmds=(cd ls cat vim)
+complete -o nospace -o filenames -F fuzzypath "${fuzzy_cmds[@]}"
+function fuzzypath() {
+    if [ -z $2 ] 
+    then
+        COMPREPLY=( `ls` )
+    else
+        DIRPATH=`echo "$2" | gsed 's|[^/]*$||'`
+        BASENAME=`echo "$2" | gsed 's|.*/||'`
+        FILTER=`echo "$BASENAME" | gsed 's|.|\0.*|g'`
+        COMPREPLY=( `ls $DIRPATH | grep -i "^$FILTER" | gsed "s|^|$DIRPATH|g"` )
+    fi
+}
 
 # function to report exit status of previous command
 function status() {

@@ -21,10 +21,10 @@ alias copy='pbcopy'
 # wireless hardware toggling
 alias bt='toggle_bluetooth'
 alias tb='toggle_bluetooth'
-alias br='toggle_bluetooth && toggle_bluetooth'
+alias br='toggle_bluetooth && sleep 1 && toggle_bluetooth'
 alias wt='toggle_wifi'
 alias tw='toggle_wifi'
-alias wr='toggle_wifi && toggle_wifi'
+alias wr='toggle_wifi && sleep 1 && toggle_wifi'
 
 # alias for MAC address spoofing script
 alias spoof='wt && sudo spoof-mac.py randomize en0'

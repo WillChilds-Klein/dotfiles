@@ -32,14 +32,14 @@ Plugin 'gmarik/Vundle.vim'
 "   http://vim-scripts.org/vikm/scripts.html
 Plugin 'twilight256.vim'
 
-" fake-clip for accessing clipboard on OS-X
-Plugin 'kana/vim-fakeclip'
-
 " vim-go for go stuff
 Plugin 'fatih/vim-go'
 
 " syntastic
 Plugin 'scrooloose/syntastic'
+
+" HackerNews plugin
+Plugin 'ryanss/vim-hackernews'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -144,3 +144,6 @@ set splitright
 " in-vim cmd to edit vimrc, then source on save/close
 map <leader>vimrc :tabe ~/.vimrc<cr>
 autocmd bufwritepost .vimrc source $MYVIMRC
+
+" correct backspace behavior
+set backspace=indent,eol,start
