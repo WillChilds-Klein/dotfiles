@@ -27,7 +27,7 @@ alias tw='toggle_wifi'
 alias wr='toggle_wifi && sleep 1 && toggle_wifi'
 
 # alias for MAC address spoofing script
-alias spoof='wt && sudo spoof-mac.py randomize en0'
+alias spoof='wt && echo "spoofing MAC address, need to enter root pass" && sudo spoof-mac.py randomize en0'
 
 # filesystem nav
 alias subl-pkgs='cd /Users/will/Library/Application\ Support/Sublime\ Text\ 3/Packages'

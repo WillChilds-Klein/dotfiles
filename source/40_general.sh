@@ -12,6 +12,9 @@ export GOPATH=$CODE/go
 export PATH=/bin:/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:$PATH
 export PATH=$GOPATH/bin:$PATH
 
+# add current directory to end of PATH to not override sys binaries
+export PATH=$PATH:.
+
 # general env variables
 export LOCALHOST='127.0.0.1'
 
@@ -30,7 +33,7 @@ alias ='clear'
 shopt -s histappend
 
 # fuzzy bash completion, src: http://superuser.com/a/607338
-fuzzy_cmds=(mv cp cd ls cat vim rm make)
+fuzzy_cmds=(mv cp cd ls cat vim rm make open subl make)
 complete -o nospace -o filenames -F fuzzypath "${fuzzy_cmds[@]}"
 function fuzzypath() {
     if [ -z $2 ] 
