@@ -27,6 +27,7 @@ alias tw='toggle_wifi'
 alias wr='toggle_wifi && sleep 1 && toggle_wifi'
 
 # alias for MAC address spoofing script
+# TODO: run spoof-mac's install/setup python script in /init
 alias spoof='wt && echo "spoofing MAC address, need to enter root pass" && sudo spoof-mac.py randomize en0'
 
 # filesystem nav
