@@ -9,12 +9,13 @@ function gcomp() {
     echo "USAGE: $ gcomp [\"commit message\"] [repo1] [repo2] ... "
 
     local msg="$1"
-    if [ "$#" -eq "0" ] || [[ "$1" -ne *"\""* ]]; then
+    if [ "$#" -eq "0" ] || [[ ! "$1" == *" "* ]]; then
         # no message specified in first arg, use default
         echo "no message specified, using default commit message"
         local msg="[auto-generated commit msg from $HOSTNAME]"
     elif [[ "$1" == *" "* ]]; then
         # first arg is commit message, shift 1 to get arr repos
+        # NOTE: commit msg must contain space (" ") to register as msg
         shift 1
     fi
 
