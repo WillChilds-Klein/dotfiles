@@ -1,0 +1,17 @@
+#!/bin/python
+
+# Will Childs-Klein {@WillChildsKlein, http://will.childs-kle.in}
+# docmd is a script that creates an empty markdown document using an filename 
+# schema, as dictated by clargs and opinionated default behavior.
+
+import os, argparse
+
+# class/project
+
+# notes
+
+# hw/pset
+
+# date (default = "today")
+
+os.exec("subl " + filename)
