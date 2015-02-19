@@ -4,6 +4,7 @@ alias gstat="git status"
 alias gdiff="git diff"
 alias gcom="git commit -am"
 alias gpush="git push"
+alias glog="git log"
 
 function gcomp() {
     echo "USAGE: $ gcomp [\"commit message\"] [repo1] [repo2] ... "
