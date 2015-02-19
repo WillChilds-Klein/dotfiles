@@ -9,7 +9,7 @@ function gcomp() {
     echo "USAGE: $ gcomp [\"commit message\"] [repo1] [repo2] ... "
 
     local msg="$1"
-    if [ "$#" -eq "0" ] || [ "$1" == *\"*\"* ]; then
+    if [ "$#" -eq "0" ] || [[ "$1" == *"\""* ]]; then
         echo "no message specified, using default commit message"
         local msg="[auto-generated commit msg from $HOSTNAME]"
     else
