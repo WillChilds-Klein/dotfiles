@@ -13,7 +13,7 @@ function gcomp() {
         # no message specified in first arg, use default
         echo "no message specified, using default commit message"
         local msg="[auto-generated commit msg from $HOSTNAME]"
-    elif [[ "$1" == *"\""*"\""* ]]; then
+    elif [[ "$1" == *" "* ]]; then
         # first arg is commit message, shift 1 to get arr repos
         shift 1
     fi
