@@ -28,7 +28,7 @@ alias wr='toggle_wifi && sleep 1 && toggle_wifi'
 
 # alias for MAC address spoofing script
 # TODO: run spoof-mac's install/setup python script in /init
-alias spoof='wt && echo "spoofing MAC address, need to enter root pass" && sudo spoof-mac.py randomize en0'
+alias spoof='wt && echo "spoofing MAC address, need to enter root pass" && sudo spoof-mac randomize en0'
 
 # filesystem nav
 alias subl-pkgs='cd /Users/will/Library/Application\ Support/Sublime\ Text\ 3/Packages'
