@@ -35,19 +35,19 @@ shopt -s histappend
 # fuzzy bash completion, src: http://superuser.com/a/607338
 # TODO: make this not suck. it doesn't currently work as expected.
 # TODO: define formal behavior for fuzzy completion
-fuzzy_cmds=(mv cp cd ls cat vim rm make open subl make)
-complete -o nospace -o filenames -F fuzzypath "${fuzzy_cmds[@]}"
-function fuzzypath() {
-    if [ -z $2 ] 
-    then
-        COMPREPLY=( `ls` )
-    else
-        DIRPATH=`echo "$2" | gsed 's|[^/]*$||'`
-        BASENAME=`echo "$2" | gsed 's|.*/||'`
-        FILTER=`echo "$BASENAME" | gsed 's|.|\0.*|g'`
-        COMPREPLY=( `ls $DIRPATH | grep -i "^$FILTER" | gsed "s|^|$DIRPATH|g"` )
-    fi
-}
+#fuzzy_cmds=(mv cp cd ls cat vim rm make open subl make)
+#complete -o nospace -o filenames -F fuzzypath "${fuzzy_cmds[@]}"
+#function fuzzypath() {
+#    if [ -z $2 ] 
+#    then
+#        COMPREPLY=( `ls` )
+#    else
+#        DIRPATH=`echo "$2" | gsed 's|[^/]*$||'`
+#        BASENAME=`echo "$2" | gsed 's|.*/||'`
+#        FILTER=`echo "$BASENAME" | gsed 's|.|\0.*|g'`
+#        COMPREPLY=( `ls $DIRPATH | grep -i "^$FILTER" | gsed "s|^|$DIRPATH|g"` )
+#    fi
+#}
 
 # function to report exit status of previous command
 function status() {

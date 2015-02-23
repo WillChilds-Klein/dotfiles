@@ -1,6 +1,10 @@
 # OSX-only stuff. Abort if not OSX.
 is_osx || return 1
 
+# enable bash-completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
 
 # ============================================================================ #
 # will's osx stuff
