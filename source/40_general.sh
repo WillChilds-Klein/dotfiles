@@ -33,6 +33,8 @@ alias ='clear'
 shopt -s histappend
 
 # fuzzy bash completion, src: http://superuser.com/a/607338
+# TODO: make this not suck. it doesn't currently work as expected.
+# TODO: define formal behavior for fuzzy completion
 fuzzy_cmds=(mv cp cd ls cat vim rm make open subl make)
 complete -o nospace -o filenames -F fuzzypath "${fuzzy_cmds[@]}"
 function fuzzypath() {
