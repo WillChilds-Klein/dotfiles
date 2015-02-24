@@ -16,9 +16,6 @@
     pager = true
 
 [alias]
-    # will's aliases
-    cmp = "git commit -a -m && git push ; status"
-
     # aliases from https://github.com/durdn/cfg/blob/master/.gitconfig
     st = status -s
 
