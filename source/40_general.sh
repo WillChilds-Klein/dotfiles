@@ -2,6 +2,9 @@
 
 # general varibales, aliases, etc
 
+# set vi editing mode for bash
+set -o vi
+
 # set directory location vars
 export CODE=$HOME/work/code
 export TOOLS=$CODE/tools
