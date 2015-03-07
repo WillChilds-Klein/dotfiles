@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # general varibales, aliases, etc
 
 # set vi editing mode for bash
@@ -17,6 +15,11 @@ export PATH=$GOPATH/bin:$PATH
 
 # add current directory to end of PATH to not override sys binaries
 export PATH=$PATH:.
+
+# print path env var in easy to read format
+function ppath() {
+    echo $PATH | sed 's/:/:\'$'\n/g'
+}
 
 # general env variables
 export LOCALHOST='127.0.0.1'
