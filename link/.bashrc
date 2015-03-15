@@ -2,7 +2,9 @@
 export DOTFILES=~/.dotfiles
 
 # Add binaries into the path
-PATH=$DOTFILES/bin:$PATH
+PATH=$PATH:$DOTFILES/bin
+PATH=$PATH:/usr/local/sbin:/usr/local/bin
+PATH=$PATH:$GOPATH/bin
 export PATH
 
 # Source all files in "source"
@@ -23,3 +25,4 @@ function dotfiles() {
 }
 
 src
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

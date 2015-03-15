@@ -1,5 +1,13 @@
+# general tools
+
+
+# FZF 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+
+# AWS 
 # add aws bin directory to PATH
-export PATH=/usr/local/aws/bin:$PATH
+export PATH=$PATH:/usr/local/aws/bin
 
 # export env vars
 export AWS_CONFIG_FILE=~/.aws/config

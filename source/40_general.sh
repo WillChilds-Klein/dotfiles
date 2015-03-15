@@ -9,13 +9,6 @@ export TOOLS=$CODE/tools
 export SCRIPTS=$DOTFILES/bin
 export GOPATH=$CODE/go
 
-# build PATH
-export PATH=/bin:/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:$PATH
-export PATH=$GOPATH/bin:$PATH
-
-# add current directory to end of PATH to not override sys binaries
-export PATH=$PATH:.
-
 # print path env var in easy to read format
 function ppath() {
     echo $PATH | sed 's/:/:\'$'\n/g'
