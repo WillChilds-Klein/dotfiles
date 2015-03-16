@@ -1,5 +1,7 @@
 # aliases etc. for working on Yale's zoo computing cluster
 
+# TODO: move all bash scripts from bin/ to bash functions in this file
+
 # zoo vars
 export ZOO_USR='wdc22'
 export ZOO_HOST='node.zoo.cs.yale.edu'
