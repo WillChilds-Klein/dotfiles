@@ -54,7 +54,7 @@ alias srcgit='vim $DOTFILES/source/50_git.sh && src'
 alias srcosx='vim $DOTFILES/source/50_osx.sh && src'
 alias srclinux='vim $DOTFILES/source/50_linux.sh && src'
 alias srcubuntu='vim $DOTFILES/source/50_ubuntu.sh && src'
-alias srctools='vim $DOTFILES/source/60_tools.sh'
+alias srctools='vim $DOTFILES/source/60_tools.sh && src'
 
 # edit rc files. 
 alias inputrc='vim $DOTFILES/link/.inputrc'

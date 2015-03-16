@@ -44,6 +44,9 @@ Plugin 'ryanss/vim-hackernews'
 " fzf for fuzzy file finding
 Plugin 'junegunn/fzf'
 
+" LiveDown markdown previewer
+Plugin 'shime/vim-livedown'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -153,3 +156,12 @@ autocmd bufwritepost .vimrc source $MYVIMRC
 
 " correct backspace behavior
 set backspace=indent,eol,start
+
+" LiveDown configuration
+cabbrev preview LivedownPreview<cr>
+" should markdown preview get shown automatically upon opening markdown buffer
+let g:livedown_autorun = 0
+" should the browser window pop-up upon previewing
+let g:livedown_open = 1 
+" the port on which Livedown server will run
+let g:livedown_port = 1337
