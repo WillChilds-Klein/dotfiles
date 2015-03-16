@@ -18,13 +18,9 @@ recipes=(
   hub
   id3tool
   lesspipe
-  man2html
-  mercurial
   nmap
-  sl
   ssh-copy-id
   terminal-notifier
-  the_silver_searcher
   tree
 )
 

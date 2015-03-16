@@ -11,8 +11,6 @@ return 1
 # Ensure the cask keg and recipe are installed.
 kegs=(
   caskroom/cask
-  # from Will, uncomment to get
-  # caskroom/versions
 )
 brew_tap_kegs
 recipes=(brew-cask)
@@ -27,55 +25,16 @@ brew cask info this-is-somewhat-annoying 2>/dev/null
 # Homebrew casks
 casks=(
   # Applications
-  a-better-finder-rename
-  bettertouchtool
-  charles
-  chromium
-  chronosync
   dropbox
-  fastscripts
-  firefox
   google-chrome
-  gyazo
-  hex-fiend
   istat-menus
-  iterm2
   launchbar
   macvim
-  moom
-  omnidisksweeper
-  race-for-the-galaxy
-  reaper
-  remote-desktop-connection
-  sonos
   spotify
-  steam
-  synology-assistant
-  teamspeak-client
-  the-unarchiver
-  todoist
-  totalfinder
-  tower
   transmission-remote-gui
   vagrant
   virtualbox
   vlc
-  # Quick Look plugins
-  betterzipql
-  qlcolorcode
-  qlmarkdown
-  qlprettypatch
-  qlstephen
-  quicklook-csv
-  quicklook-json
-  quicknfo
-  suspicious-package
-  webp-quicklook
-  # Color pickers
-  colorpicker-developer
-  colorpicker-skalacolor
-  # from Will, uncomment to get
-  # sublime-text3
 )
 
 # Install Homebrew casks.

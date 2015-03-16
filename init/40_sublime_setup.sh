@@ -6,4 +6,4 @@ is_osx || return 1
 # sublime text 3 should be installed by homebrew cask
 
 # link settings to proper directory
-ln -s ~/.dotfiles/sublime/User/ ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
+# ln -s ~/.dotfiles/sublime/User/ ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User

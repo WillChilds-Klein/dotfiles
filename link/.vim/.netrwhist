@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/Users/will/code/zoo-code'
 let g:netrw_dirhist_2='/Users/will/Library/Application Support/Sublime Text 3/Packages/User/sftp_servers'
 let g:netrw_dirhist_3='/Users/will/.vim/bundle/twilight/colors'
@@ -7,3 +7,4 @@ let g:netrw_dirhist_4='/Users/will/.dotfiles/source'
 let g:netrw_dirhist_5='/Users/will/.dotfiles/.git'
 let g:netrw_dirhist_6='/Users/will/.dotfiles/.git/refs'
 let g:netrw_dirhist_7='/Users/will/.dotfiles/.git/refs/heads'
+let g:netrw_dirhist_8='/Users/will/.dotfiles/link'
