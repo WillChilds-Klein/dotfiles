@@ -37,6 +37,8 @@ alias spoof='wt && echo "spoofing MAC address, need to enter root pass" && sudo 
 # filesystem nav
 alias subl-pkgs='cd /Users/will/Library/Application\ Support/Sublime\ Text\ 3/Packages'
 
+# htop needs root privileges to work
+alias htop='sudo htop'
 
 # ============================================================================ #
 # stuff from https://github.com/cowboy/dotfiles/blob/master/source/50_osx.sh
