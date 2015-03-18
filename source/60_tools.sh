@@ -24,3 +24,6 @@ alias zeus='ssh -i ~/.aws/athena-zeus.pem ubuntu@ec2-52-11-189-255.us-west-2.com
 
 # vim-hackernews
 alias hn='vim +HackerNews'
+
+# print tmux colors
+alias tmux-colors='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i}\n"; done'

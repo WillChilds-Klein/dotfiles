@@ -150,6 +150,9 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
+" disable auto comment insertion
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 " in-vim cmd to edit vimrc, then source on save/close
 map <leader>vimrc :tabe ~/.vimrc<cr>
 autocmd bufwritepost .vimrc source $MYVIMRC

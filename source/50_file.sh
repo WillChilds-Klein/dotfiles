@@ -59,3 +59,6 @@ alias srctools='vim $DOTFILES/source/60_tools.sh && src'
 # edit rc files. 
 alias inputrc='vim $DOTFILES/link/.inputrc'
 alias vimrc='vim $DOTFILES/link/.vimrc'
+
+# edit and source tmux conf file
+alias tmuxrc='vim $DOTFILES/link/.tmux.conf'

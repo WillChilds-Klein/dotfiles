@@ -21,6 +21,7 @@ export LOCALHOST='127.0.0.1'
 export VISUAL=vim
 export EDITOR='vim -e'
 export PAGER=less
+export TERM="xterm-256color"
 
 # application aliases
 alias grep='grep --color'
