@@ -47,6 +47,9 @@ Plugin 'junegunn/fzf'
 " LiveDown markdown previewer
 Plugin 'shime/vim-livedown'
 
+" Commentary for easy comment toggling
+Plugin 'tpope/vim-commentary'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -133,8 +136,12 @@ nnoremap <unique> : ;
 set hlsearch
 nnoremap jk :noh<return>jk
 
+" faster escape time
+" NOTE: default is 1000, which causes annoying lag
+set timeoutlen=100
+
 " allow cursor to be one char past EOL
-set virtualedit=onemore 
+set virtualedit=onemore
 
 " enable cursor wrapping
 set whichwrap+=<,>,h,l,[,]

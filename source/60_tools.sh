@@ -1,11 +1,37 @@
-# general tools
+# --------------------------------------------------------------------------- #
+# general tool application aliases
+# --------------------------------------------------------------------------- #
+alias grep='grep --color'
+alias p='ping 8.8.8.8'
+alias ip='ifconfig | grep "inet " | grep -v 127.0.0.1'
+alias ='clear'
+
+# vim-hackernews
+alias hn='vim +HackerNews'
+
+# print tmux colors
+alias tmux-colors='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i}\n"; done'
+
+# less
+export LESS='-R'
+export LESSOPEN='|~/.lessfilter %s'
+# =========================================================================== #
 
 
+
+
+# --------------------------------------------------------------------------- #
 # FZF 
+# --------------------------------------------------------------------------- #
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# =========================================================================== #
 
 
+
+
+# --------------------------------------------------------------------------- #
 # AWS 
+# --------------------------------------------------------------------------- #
 # add aws bin directory to PATH
 export PATH=$PATH:/usr/local/aws/bin
 
@@ -21,9 +47,4 @@ complete -C '/usr/local/bin/aws_completer' aws
 
 # connect to zeus EC2 instance via ssh
 alias zeus='ssh -i ~/.aws/athena-zeus.pem ubuntu@ec2-52-11-189-255.us-west-2.compute.amazonaws.com'
-
-# vim-hackernews
-alias hn='vim +HackerNews'
-
-# print tmux colors
-alias tmux-colors='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i}\n"; done'
+# =========================================================================== #

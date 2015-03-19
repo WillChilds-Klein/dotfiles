@@ -15,19 +15,13 @@ function ppath() {
 }
 
 # general env variables
-export LOCALHOST='127.0.0.1'
+export LOCALHOST="127.0.0.1"
 
 # default application env variables
-export VISUAL=vim
-export EDITOR='vim -e'
-export PAGER=less
+export VISUAL="vim"
+export EDITOR="vim -e"
+export PAGER="less"
 export TERM="xterm-256color"
-
-# application aliases
-alias grep='grep --color'
-alias p='ping 8.8.8.8'
-alias ip='ifconfig | grep "inet " | grep -v 127.0.0.1'
-alias ='clear'
 
 # append to the Bash history file, rather than overwriting it
 shopt -s histappend
