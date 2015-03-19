@@ -3,8 +3,23 @@
 # --------------------------------------------------------------------------- #
 alias grep='grep --color'
 alias p='ping 8.8.8.8'
-alias ip='ifconfig | grep "inet " | grep -v 127.0.0.1'
 alias ='clear'
+
+function ip() {
+    local esc=$(printf '\033')
+    local red="${esc}[31m"
+    local green="${esc}[32m"
+    local blue="${esc}[34m"
+    local none="${esc}[0m"
+
+    local host=$(hostname)
+    local public=$(bash -c "curl -s orga.cat/ip" | tr -d '\r')
+    local private=$(ifconfig | grep 'inet ' | grep -v 127.0.0.1 | awk '{print $2}' | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' | sed "s/.*/${red}&${none}\,/" | xargs)
+
+    printf "Host: [${blue}${host}${none}]\n"
+    printf "Public IP: [${green}${public}${none}]\n"
+    printf "Private IP: [${private%?}]\n"
+}
 
 # vim-hackernews
 alias hn='vim +HackerNews'
