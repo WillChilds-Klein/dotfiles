@@ -67,7 +67,7 @@ alias zeus='ssh -i ~/.aws/athena-zeus.pem ubuntu@ec2-52-11-189-255.us-west-2.com
 # --------------------------------------------------------------------------- #
 # Vagrant
 # --------------------------------------------------------------------------- #
-alias vagst='vagrant global-status'
+alias vag-st='vagrant global-status'
 
 function vagrant_ids() {
     if [[ $# -gt 0 ]]; then
@@ -96,6 +96,20 @@ function vagrant_destroyall() {
 
     for vagrant_id in ${id_list[@]}; do
        vagrant destroy -f ${vagrant_id};
+    done
+}
+
+function vagrant_haltall() {
+    id_list=( $(vagrant_ids) )
+
+    if [[ ${#id_list[@]} -eq 0 ]]; then
+        echo "No active vagrant environments!"
+        return 1;
+    fi
+
+    for vagrant_id in ${id_list[@]}; do
+       vagrant halt ${vagrant_id};
+       status;
     done
 }
 # =========================================================================== #
