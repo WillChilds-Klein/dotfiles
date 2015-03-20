@@ -34,13 +34,11 @@ export LESSOPEN='|~/.lessfilter %s'
 
 
 
-
 # --------------------------------------------------------------------------- #
 # FZF 
 # --------------------------------------------------------------------------- #
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 # =========================================================================== #
-
 
 
 
@@ -62,4 +60,42 @@ complete -C '/usr/local/bin/aws_completer' aws
 
 # connect to zeus EC2 instance via ssh
 alias zeus='ssh -i ~/.aws/athena-zeus.pem ubuntu@ec2-52-11-189-255.us-west-2.compute.amazonaws.com'
+# =========================================================================== #
+
+
+
+# --------------------------------------------------------------------------- #
+# Vagrant
+# --------------------------------------------------------------------------- #
+alias vagst='vagrant global-status'
+
+function vagrant_ids() {
+    if [[ $# -gt 0 ]]; then
+        echo "USAGE: vagrant_ids [-l]";
+        return 1;
+    fi
+    $(which -s vagrant) || { echo "Vagrant is not installed!"; return 1; }
+
+    local id_str
+    idstr=$(vagrant global-status | cut -f1 -s -d ' ' | grep -e '[a-f0-9]\{7\}' | xargs)
+
+    if [[ ${#idstr} -eq 0 ]]; then
+        return 1;
+    else
+        echo ${idstr};
+    fi
+}
+
+function vagrant_destroyall() {
+    id_list=( $(vagrant_ids) )
+
+    if [[ ${#id_list[@]} -eq 0 ]]; then
+        echo "No active vagrant environments!"
+        return 1;
+    fi
+
+    for vagrant_id in ${id_list[@]}; do
+       vagrant destroy -f ${vagrant_id};
+    done
+}
 # =========================================================================== #

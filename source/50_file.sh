@@ -47,18 +47,15 @@ alias godir='cd $GOPATH/ && ll'
 alias dedis='cd $GOPATH/src/github.com/dedis && ll'
 
 # dotfile editing and immediate sourcing/updating
-alias srcgen='vim $DOTFILES/source/40_general.sh && src'
-alias srcfile='vim $DOTFILES/source/50_file.sh && src'
-alias srcprompt='vim $DOTFILES/source/50_bash_prompt.sh && src'
-alias srcgit='vim $DOTFILES/source/50_git.sh && src'
-alias srcosx='vim $DOTFILES/source/50_osx.sh && src'
-alias srclinux='vim $DOTFILES/source/50_linux.sh && src'
-alias srcubuntu='vim $DOTFILES/source/50_ubuntu.sh && src'
-alias srctools='vim $DOTFILES/source/60_tools.sh && src'
+alias srcgen='vim $DOTFILES/source/40_general.sh && src 40_general'
+alias srcfile='vim $DOTFILES/source/50_file.sh && src 50_file'
+alias srcprompt='vim $DOTFILES/source/50_bash_prompt.sh && src 50_bash_prompt'
+alias srcgit='vim $DOTFILES/source/50_git.sh && src 50_git'
+alias srcosx='vim $DOTFILES/source/50_osx.sh && src 50_osx'
+alias srcubuntu='vim $DOTFILES/source/50_ubuntu.sh && src 50_ubuntu'
+alias srctools='vim $DOTFILES/source/60_tools.sh && src 60_tools'
 
-# edit rc files. 
+# edit rc/conf files. 
 alias inputrc='vim $DOTFILES/link/.inputrc'
 alias vimrc='vim $DOTFILES/link/.vimrc'
-
-# edit tmux conf file
 alias tmuxrc='vim $DOTFILES/link/.tmux.conf'
