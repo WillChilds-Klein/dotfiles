@@ -1,6 +1,6 @@
-# --------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 # general tool application aliases
-# --------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 alias grep='grep --color'
 alias p='ping 8.8.8.8'
 alias ='clear'
@@ -30,21 +30,21 @@ alias tmux-colors='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i}\n"; 
 # less
 export LESS='-R'
 export LESSOPEN='|~/.lessfilter %s'
-# =========================================================================== #
+# ============================================================================ #
 
 
 
-# --------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 # FZF 
-# --------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-# =========================================================================== #
+# ============================================================================ #
 
 
 
-# --------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 # AWS 
-# --------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 # add aws bin directory to PATH
 export PATH=$PATH:/usr/local/aws/bin
 
@@ -60,14 +60,15 @@ complete -C '/usr/local/bin/aws_completer' aws
 
 # connect to zeus EC2 instance via ssh
 alias zeus='ssh -i ~/.aws/athena-zeus.pem ubuntu@ec2-52-11-189-255.us-west-2.compute.amazonaws.com'
-# =========================================================================== #
+# ============================================================================ #
 
 
 
-# --------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 # Vagrant
-# --------------------------------------------------------------------------- #
-alias vag-st='vagrant global-status'
+# ---------------------------------------------------------------------------- #
+alias vag-st='vagrant status'
+alias vag-gs='vagrant global-status'
 
 function vagrant_ids() {
     if [[ $# -gt 0 ]]; then
@@ -87,29 +88,94 @@ function vagrant_ids() {
 }
 
 function vagrant_destroyall() {
-    id_list=( $(vagrant_ids) )
+    local exceptions index id_list id_regex
 
+    echo -e "========================== DESTROYING VAGRANT MACHINES ==========================\n"
+
+    id_list=( $(vagrant_ids) )
     if [[ ${#id_list[@]} -eq 0 ]]; then
         echo "No active vagrant environments!"
         return 1;
     fi
 
-    for vagrant_id in ${id_list[@]}; do
-       vagrant destroy -f ${vagrant_id};
+    exceptions=( "$@" )
+    id_regex="^[[:xdigit:]]{7}$"
+    index=0
+    for except in ${exceptions[@]}; do
+        if ! [[ ${except} =~ ${id_regex} ]]; then
+            echo "Found invalid Vagrant ID!"
+            echo "Expected: Vagrant ID as 7-digit hex num. Given: ${except}."
+            echo -e "Removing ${except} from list and proceeding...\n"
+            unset exceptions[$index]
+            exceptions=( ${exceptions[@]} )
+        else
+            let index++
+        fi
     done
+
+    echo "FOUND VAGRANT MACHINE IDS IN ENV: ${id_list[@]}"
+    echo -e "MACHINES TO KEEP ALIVE: ${exceptions[@]}\n"
+
+    for vagrant_id in ${id_list[@]}; do
+        if bash_arr_contains ${vagrant_id} ${exceptions[@]} ; then
+            echo "Sparing ${vagrant_id} from destruction. Live long and prosper, friend."
+        else
+            echo "Destroying ${vagrant_id}."
+            if vagrant destroy -f ${vagrant_id} ; then
+                echo "${vagrant_id} has been destroyed. May they rest in peace."
+            else 
+                echo "Agh! A zombie! Might have failed to destroy ${vagrant_id}."
+            fi
+        fi
+        echo
+    done;
+
+    echo "====================================== Done ======================================"
 }
 
 function vagrant_haltall() {
-    id_list=( $(vagrant_ids) )
+    local exceptions index id_list id_regex
 
+    echo -e "============================ HALTING VAGRANT MACHINES ===========================\n"
+
+    id_list=( $(vagrant_ids) )
     if [[ ${#id_list[@]} -eq 0 ]]; then
         echo "No active vagrant environments!"
         return 1;
     fi
 
-    for vagrant_id in ${id_list[@]}; do
-       vagrant halt ${vagrant_id};
-       status;
+    exceptions=( "$@" )
+    id_regex="^[[:xdigit:]]{7}$"
+    index=0
+    for except in ${exceptions[@]}; do
+        if ! [[ ${except} =~ ${id_regex} ]]; then
+            echo "Found invalid Vagrant ID!"
+            echo "Expected: Vagrant ID as 7-digit hex num. Given: ${except}."
+            echo -e "Removing ${except} from list and proceeding...\n"
+            unset exceptions[$index]
+            exceptions=( ${exceptions[@]} )
+        else
+            let index++
+        fi
     done
+
+    echo "FOUND VAGRANT MACHINE IDS IN ENV: ${id_list[@]}"
+    echo -e "MACHINES TO KEEP RUNNING: ${exceptions[@]}\n"
+
+    for vagrant_id in ${id_list[@]}; do
+        if bash_arr_contains ${vagrant_id} ${exceptions[@]} ; then
+            echo "Letting ${vagrant_id} stay up late. Still running."
+        else
+            echo "Ssshhh time to sleep little one. Halting ${vagrant_id}."
+            if vagrant halt ${vagrant_id} ; then
+                echo "Nighty night. ${vagrant_id} has halted."
+            else 
+                echo "Damn kids. ${vagrant_id} just won't go to bed, might still be running!"
+            fi
+        fi
+        echo
+    done;
+
+    echo "====================================== Done ======================================"
 }
-# =========================================================================== #
+# ============================================================================ #

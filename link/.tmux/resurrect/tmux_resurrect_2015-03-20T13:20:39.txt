@@ -1,0 +1,15 @@
+pane	system	1	:top	0	:#	1	:	1	bash	:sudo htop
+pane	system	2	:network	1	:*	1	:/Users/will	1	bash	:
+pane	system	2	:network	1	:*	2	:/Users/will	0	ping	:ping 8.8.8.8
+pane	system	2	:network	1	:*	3	:/Users/will	0	man	:man netstat
+pane	system	3	:tmux	0	:-	1	:/Users/will	0	man	:man tmux
+pane	system	3	:tmux	0	:-	2	:/Users/will	0	vim	:vim /Users/will/.dotfiles/link/.tmux.conf
+pane	system	3	:tmux	0	:-	3	:/Users/will	1	bash	:
+pane	thesis	1	:bash	1	:*	1	:/Users/will	1	bash	:
+pane	thesis	1	:bash	1	:*	2	:/Users/will/.dotfiles	0	vim	:vim bin/simpleserver
+pane	thesis	1	:bash	1	:*	3	:/Users/will	0	Python	:/usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python /Users/will/.dotfiles/bin/simpleserver
+window	system	1	0	:#	b75e,238x61,0,0,1
+window	system	2	1	:*	c4e7,318x73,0,0{169x73,0,0,2,148x73,170,0[148x16,170,0,3,148x56,170,17,4]}
+window	system	3	0	:-	8142,318x73,0,0{159x73,0,0,7,158x73,160,0[158x36,160,0,6,158x36,160,37,8]}
+window	thesis	1	1	:*	8127,318x73,0,0{159x73,0,0,0,158x73,160,0[158x36,160,0,5,158x36,160,37,9]}
+state	thesis	thesis

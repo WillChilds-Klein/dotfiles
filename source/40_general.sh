@@ -42,3 +42,14 @@ function status() {
 
     printf "EXIT STATUS: $exit_status\n"
 }
+
+# USAGE: $ bash_arr_contains target_elt src_arr
+# SOURCE: http://stackoverflow.com/a/8574392/4377800
+function bash_arr_contains() {
+    local e
+    for e in "${@:2}"; do
+        [[ "$e" == "$1" ]] && return 0
+    done
+
+    return 1
+}
