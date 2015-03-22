@@ -69,6 +69,7 @@ complete -C '/usr/local/bin/aws_completer' aws
 
 # connect to zeus EC2 instance via ssh
 alias zeus='ssh -i ~/.aws/athena-zeus.pem ubuntu@ec2-52-11-189-255.us-west-2.compute.amazonaws.com'
+alias mzeus='mosh --ssh="ssh -i ~/.aws/athena-zeus.pem" ubuntu@ec2-52-11-189-255.us-west-2.compute.amazonaws.com'
 # ============================================================================ #
 
 
