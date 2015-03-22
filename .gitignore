@@ -16,4 +16,4 @@
 *LOCAL*
 
 # ignore tmux history stuff
-link/.tmux/resurrect/*
+/link/.tmux/resurrect/*
