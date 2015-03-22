@@ -47,8 +47,11 @@ Plugin 'junegunn/fzf'
 " LiveDown markdown previewer
 Plugin 'shime/vim-livedown'
 
-" Commentary for easy comment toggling
-Plugin 'tpope/vim-commentary'
+" tcomment for managing comments
+Plugin 'scrooloose/nerdcommenter'
+
+" vim-tmux for some sweet tmux tools
+Plugin 'tmux-plugins/vim-tmux'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -77,22 +80,34 @@ let g:syntastic_mode_map = { 'mode': 'passive',
 
 
 " =============== General .vimrc stuff ================ "
-
+" map <leader> to space key
+map <Space> <Leader>
+" quick write
+nnoremap <Leader>w :w<CR>
+" quick quit
+nnoremap <Leader>q :q<CR>
+" in vim, <Leader>v to edit .vimrc in new tab
+nnoremap <Leader>v :tabe $VIMRC<CR>
+" auto source .vimrc when its buffer is written to
+autocmd bufwritepost .vimrc source $VIMRC
 " use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
+" hide buffer instead of closing 
+set hidden
 " Optimize for fast terminal connections
 set ttyfast
 " Highlight dynamically as pattern is typed
 set incsearch
-" Make tabs as wide as two spaces
-set tabstop=2
 " Show “invisible” characters
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+" show whitespac chars
 set list
 " Highlight searches
 set hlsearch
 " Ignore case of searches
 set ignorecase
+" ignore case if search pattern is all lowercase, case-sensitive otherwise
+set smartcase
 " Disable error bells
 set noerrorbells
 " Start scrolling three lines before the horizontal window border
@@ -103,26 +118,39 @@ set title
 set nostartofline
 " Enable line numbers
 set number
-
-:set ruler
-
-set smartindent
-set tabstop=4
-set shiftwidth=4
+" show ruler numbers on bottom right of screen
+set ruler
+" insert space characters when tab is pressed
 set expandtab
+" Make tabs as wide as two spaces
+set tabstop=4
+" number of space chars for indentation
+set shiftwidth=4
+" no more damn .swp files
+set noswapfile
+" enable auto-indenting
+set autoindent
+" use previous line's indentation for autoindenting
+set copyindent
+" on wrapped lines, don't jump to next acual line
+nnoremap j gj
+nnoremap k gk
+" remap recording to Q. q just gets in the way
+nnoremap Q q
+nnoremap q <Nop>
 
+" nice syntax highlighting
 syntax on
 colorscheme twilight256
 
+" activate mouse control if available
 if has("mouse")
     set mouse=a
 endif
 
 " map 'jk' to <Esc>
-:imap jk <Esc>
-
-" show line numbers
-set nu
+imap jk <Esc>
+vmap jk <Esc>
 
 " remap ; to :
 cnoremap <expr> ; getcmdpos() == 1 ? '<C-F>A' : ';'
@@ -134,11 +162,12 @@ nnoremap <unique> : ;
 
 " highlight search results
 set hlsearch
-nnoremap jk :noh<return>jk
+" silently unhighlight search on 'jk'
+nnoremap <silent> jk :nohlsearch<CR>
 
-" faster escape time
+" faster timeout time to eliminate cursor lag on 'jk'
 " NOTE: default is 1000, which causes annoying lag
-set timeoutlen=100
+set timeoutlen=200
 
 " allow cursor to be one char past EOL
 set virtualedit=onemore
@@ -149,20 +178,18 @@ set whichwrap+=<,>,h,l,[,]
 " set qq to ignore changes -> quit
 cabbrev qq q!
 
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" vim window navigation?
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+" nnoremap <C-H> <C-W><C-H>
 
+" good vim-split behavior
 set splitbelow
 set splitright
 
 " disable auto comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" in-vim cmd to edit vimrc, then source on save/close
-map <leader>vimrc :tabe ~/.vimrc<cr>
-autocmd bufwritepost .vimrc source $MYVIMRC
 
 " correct backspace behavior
 set backspace=indent,eol,start
