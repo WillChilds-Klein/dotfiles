@@ -27,6 +27,9 @@ if ! [[ -d ~/.tmux/plugins/tpm ]]; then
     echo "tpm repo cloned, hit <prefix>r then <prefix>I to install plugins!"
 fi
 
+# pretty json
+alias pretty-json="python -mjson.tool"
+
 # vim-hackernews
 alias hn='vim +HackerNews'
 

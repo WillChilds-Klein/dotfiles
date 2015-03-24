@@ -53,6 +53,7 @@ alias srcprompt='vim $DOTFILES/source/50_bash_prompt.sh && src 50_bash_prompt'
 alias srcgit='vim $DOTFILES/source/50_git.sh && src 50_git'
 alias srcosx='vim $DOTFILES/source/50_osx.sh && src 50_osx'
 alias srcubuntu='vim $DOTFILES/source/50_ubuntu.sh && src 50_ubuntu'
+alias srczoo='vim $DOTFILES/source/50_zoo.sh && src 50_zoo'
 alias srctools='vim $DOTFILES/source/60_tools.sh && src 60_tools'
 
 # edit rc/conf files. 

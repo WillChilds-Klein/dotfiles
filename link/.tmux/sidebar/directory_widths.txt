@@ -1,1 +1,2 @@
 /Users/will/.dotfiles	40
+/Users/will/work/classes/cpsc490/tools/coreos-vagrant	40

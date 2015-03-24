@@ -9,4 +9,5 @@ export ZOO_HOME='/home/accts/wdc22'
 
 # zoo remote stuff
 alias zoo='ssh -Y wdc22@node.zoo.cs.yale.edu'
+alias mzoo='mosh wdc22@node.zoo.cs.yale.edu'
 alias zoo-run='remote-run $ZOO_USR $ZOO_HOST $ZOO_HOME $@'
