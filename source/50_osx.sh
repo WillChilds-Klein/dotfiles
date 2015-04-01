@@ -44,6 +44,7 @@ alias htop='sudo htop'
 # stuff from https://github.com/cowboy/dotfiles/blob/master/source/50_osx.sh
 # ---------------------------------------------------------------------------- #
 
+# TODO: re-examin path structure
 # APPLE, Y U PUT /usr/bin B4 /usr/local/bin?!
 #  PATH="/usr/local/bin:$(path_remove /usr/local/bin)"
 #  export PATH

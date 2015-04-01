@@ -1,2 +1,6 @@
-/Users/will/.dotfiles	40
+/Users/will/.dotfiles/link/.tmux/sidebar	40
+/Users/will/work/classes	40
 /Users/will/work/classes/cpsc490/tools/coreos-vagrant	40
+/Users/will/work/code/go/src/github.com/gizak/termui	40
+/Users/will/work/classes/cpsc490/tools/1Node	40
+/Users/will/work/classes/cpsc490/tools/pachyderm-pfs	40
