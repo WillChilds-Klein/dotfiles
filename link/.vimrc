@@ -89,6 +89,8 @@ map <Space> <Leader>
 nnoremap <Leader>w :w<CR>
 " quick quit
 nnoremap <Leader>q :q<CR>
+" quick write+quit
+nnoremap <Leader>wq :wq<CR>
 " in vim, <Leader>v to edit .vimrc in new tab
 nnoremap <Leader>v :tabe $VIMRC<CR>
 " auto source .vimrc when its buffer is written to

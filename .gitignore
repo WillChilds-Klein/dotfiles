@@ -16,5 +16,7 @@
 *LOCAL*
 
 # ignore tmux history and plugins
-/link/.tmux/resurrect/*.txt
+/link/.tmux/resurrect/*.*
+/link/.tmux/resurrect/*
 /link/.tmux/plugins/*
+/link/.tmux/sidebar/*.*

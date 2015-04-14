@@ -28,13 +28,13 @@ if ! [[ -d ~/.tmux/plugins/tpm ]]; then
 fi
 
 # pretty json
-alias pretty-json="python -mjson.tool"
+alias pretty-json="jq ."
 
 # vim-hackernews
 alias hn='vim +HackerNews'
 
 # easy search for switch in man
-function manswitch () { 
+function mansw () { 
     man $1 | less -p "^ +$2"
 }
 
