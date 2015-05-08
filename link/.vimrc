@@ -32,8 +32,20 @@ Plugin 'gmarik/Vundle.vim'
 "   http://vim-scripts.org/vikm/scripts.html
 Plugin 'twilight256.vim'
 
+" tomorrow color scheme
+Plugin 'chriskempson/tomorrow-theme'
+
+" hybrid color scheme
+Plugin 'w0ng/vim-hybrid'
+
 " vim-go for go stuff
 Plugin 'fatih/vim-go'
+
+" vim-surround for easy brackets etc
+Plugin 'tpope/vim-surround'
+
+" repeat support for plugins
+Plugin 'tpope/vim-repeat'
 
 " syntastic
 Plugin 'scrooloose/syntastic'
@@ -41,11 +53,12 @@ Plugin 'scrooloose/syntastic'
 " HackerNews plugin
 Plugin 'ryanss/vim-hackernews'
 
+" vim-markdown
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
 " fzf for fuzzy file finding
 Plugin 'junegunn/fzf'
-
-" LiveDown markdown previewer
-Plugin 'shime/vim-livedown'
 
 " tcomment for managing comments
 Plugin 'scrooloose/nerdcommenter'
@@ -54,7 +67,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tmux-plugins/vim-tmux'
 
 " syntax highlighting for Dockerfile
-Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'ekalinin/Dockerfile.vim' 
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -89,9 +102,15 @@ map <Space> <Leader>
 nnoremap <Leader>w :w<CR>
 " quick quit
 nnoremap <Leader>q :q<CR>
+" quick force quit
+nnoremap <Leader>qf :q!<CR>
 " quick write+quit
 nnoremap <Leader>wq :wq<CR>
+" <Leader>-b to invoke make with target of current file's basename
+"nnoremap <Leader>b :silent make %:r\|redraw!\|cw<CR>
+nnoremap <Leader>b :make<CR>:copen<CR>
 " in vim, <Leader>v to edit .vimrc in new tab
+nnoremap <Leader>n :HackerNews<CR>
 nnoremap <Leader>v :tabe $VIMRC<CR>
 " auto source .vimrc when its buffer is written to
 autocmd bufwritepost .vimrc source $VIMRC
@@ -116,7 +135,7 @@ set smartcase
 " Disable error bells
 set noerrorbells
 " Start scrolling three lines before the horizontal window border
-set scrolloff=3
+set scrolloff=10
 " Show the filename in the window titlebar
 set title
 " Don’t reset cursor to start of line when moving around.
@@ -144,6 +163,7 @@ nnoremap k gk
 nnoremap Q q
 nnoremap q <Nop>
 
+
 " nice syntax highlighting
 syntax on
 colorscheme twilight256
@@ -165,6 +185,11 @@ nnoremap <unique> ; :
 nnoremap <unique> : ;
 " TODO: map ';;' to exit-insert && ';'
 
+" http://vimdoc.sourceforge.net/htmldoc/eval.html#last-position-jump
+"   This autocommand jumps to the last known position in a file
+"   just after opening it, if the '"' mark is set:
+:au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
 " highlight search results
 set hlsearch
 " silently unhighlight search on 'jk'
@@ -183,11 +208,8 @@ set whichwrap+=<,>,h,l,[,]
 " set qq to ignore changes -> quit
 cabbrev qq q!
 
-" vim window navigation?
-" nnoremap <C-J> <C-W><C-J>
-" nnoremap <C-K> <C-W><C-K>
-" nnoremap <C-L> <C-W><C-L>
-" nnoremap <C-H> <C-W><C-H>
+" set color scheme
+colorscheme twilight256
 
 " good vim-split behavior
 set splitbelow
@@ -199,11 +221,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " correct backspace behavior
 set backspace=indent,eol,start
 
-" LiveDown configuration
-cabbrev preview LivedownPreview<cr>
-" should markdown preview get shown automatically upon opening markdown buffer
-let g:livedown_autorun = 0
-" should the browser window pop-up upon previewing
-let g:livedown_open = 1 
-" the port on which Livedown server will run
-let g:livedown_port = 1337
+" vim-markdown config
+let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_math=1
+let g:vim_markdown_frontmatter=1

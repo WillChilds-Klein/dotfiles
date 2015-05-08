@@ -154,11 +154,7 @@ function main() {
         vagrant_destroyall $@
         return $?
     elif [[ $cmd = "gs" ]]; then
-        vagrant global-status
-        return $?
-    elif [[ $cmd = "st" ]]; then
-        shift
-        vagrant status $@
+        vagrant global-status $@
         return $?
     elif [[ $cmd = -h ]]; then
         # TODO: print help message for commands etc

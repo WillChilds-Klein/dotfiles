@@ -53,3 +53,8 @@ function bash_arr_contains() {
 
     return 1
 }
+
+function abs_filename() {
+  # $1 : relative filename
+    echo "$(cd "$(dirname "$1")" && pwd)/$(basename "$1")"
+}

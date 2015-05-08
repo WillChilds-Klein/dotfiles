@@ -27,15 +27,47 @@ if ! [[ -d ~/.tmux/plugins/tpm ]]; then
     echo "tpm repo cloned, hit <prefix>r then <prefix>I to install plugins!"
 fi
 
+# cd and list
+#function cdl () {
+    #cd $1 && tree --dirsfirst -aLpughDFiC 1
+#}
+
 # pretty json
 alias pretty-json="jq ."
+
+# show open ports
+alias ports='lsof -i -P | grep -i "listen"'
 
 # vim-hackernews
 alias hn='vim +HackerNews'
 
+# alias to correct previous (mistaken) command
+alias fuck='eval $(thefuck $(fc -ln -1))'
+
+#  src: http://unix.stackexchange.com/a/17308
+highlight () {
+    perl -pe "s/$1/\e[1;31;43m$&\e[0m/g"
+}
+
+# alias for accessing libs section of man, including C libs
+function manc () {
+    man 2 $1 || man 3 $1 || echo "no man page for $1 found in sections 2,3";
+}
+
 # easy search for switch in man
 function mansw () { 
-    man $1 | less -p "^ +$2"
+    man $1 | less -p "^ +$2";
+}
+
+# merge pdf's using ghostscript
+function pdf-merge () {
+    if [[ $# -lt 2 ]]; then
+        echo "USAGE: $0 OUTPUT.pdf FILE1.pdf [FILE2.pdf ...]"
+        return 1
+    fi
+    local out=$1
+
+    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=$1 $@
 }
 
 # .vimrc location
@@ -72,6 +104,89 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 
 # ---------------------------------------------------------------------------- #
+# Digital Ocean
+# ---------------------------------------------------------------------------- #
+# function to set auth env vars
+function digitalocean_set_env () {
+    echo "setting env variables for DigitalOcean auth"
+    export TOKEN="$(cat ~/.digitalocean/athena_access_token)"
+    export SSH_KEY_NAME="$(cat ~/.digitalocean/ssh_key_name)"
+    export NUM_INSTANCES=${1:-"3"}
+    echo "done."
+}
+# ============================================================================ #
+
+
+
+
+# ---------------------------------------------------------------------------- #
+# Terminal Color Variables
+# ---------------------------------------------------------------------------- #
+# COLOR ESC NUMS
+#30	Black
+#31	Red
+#32	Green
+#33	Yellow
+#34	Blue
+#35	Magenta
+#36	Cyan
+
+TERM_ESC=$(printf '\033');
+TERM_BLACK="${esc}[30m";
+TERM_RED="${esc}[31m";
+TERM_GREEN="${esc}[32m";
+TERM_YELLOW="${esc}[33m";
+TERM_BLUE="${esc}[34m";
+TERM_MAGENTA="${esc}[35m";
+TERM_CYAN="${esc}[36m";
+TERM_NONE="${esc}[0m";
+# ============================================================================ #
+
+
+
+# ---------------------------------------------------------------------------- #
+# Vagrant
+# ---------------------------------------------------------------------------- #
+alias vag-st='vagrant status'
+alias vag-gs='vagrant global-status'
+
+# add vagrant insecure private key to ssh agent if exists and not added.
+if [[ `ssh-add -l` != *vagrant.d/insecure_private_key* && \
+       -f ~/.vagrant.d/insecure_private_key ]]; then
+    ssh-add ~/.vagrant.d/insecure_private_key
+fi
+# ============================================================================ #
+
+
+
+# ---------------------------------------------------------------------------- #
+# Docker
+# ---------------------------------------------------------------------------- #
+alias b2d='boot2docker'
+alias b2denv='eval $(boot2docker shellinit)'
+alias b2dunenv='unset  DOCKER_TLS_VERIFY && unset  DOCKER_HOST && unset  DOCKER_CERT_PATH'
+
+export DOCKER_MACHINE_TOKEN="82c296e80efd35f74e84a8d06b02bb046666e2596d5199677304b0d152460d0e"
+function dockm () {
+    if [[ $1 = "switch" ]]; then
+        docker-machine active $2 &&
+        eval $(docker-machine env $2)
+        return $?
+    elif [[ $1 = "vars" ]]; then
+        eval $(docker-machine env $2)
+        return $?
+    else
+        docker-machine $@
+        return $?
+    fi
+}
+# ============================================================================ #k
+
+
+
+is_osx || return $?
+
+# ---------------------------------------------------------------------------- #
 # AWS 
 # ---------------------------------------------------------------------------- #
 # add aws bin directory to PATH
@@ -90,14 +205,4 @@ complete -C '/usr/local/bin/aws_completer' aws
 # connect to zeus EC2 instance via ssh
 alias zeus='ssh -i ~/.aws/athena-zeus.pem ubuntu@ec2-52-11-189-255.us-west-2.compute.amazonaws.com'
 alias mzeus='mosh --ssh="ssh -i ~/.aws/athena-zeus.pem" ubuntu@ec2-52-11-189-255.us-west-2.compute.amazonaws.com'
-# ============================================================================ #
-
-
-
-# ---------------------------------------------------------------------------- #
-# Vagrant
-# ---------------------------------------------------------------------------- #
-alias vag-st='vagrant status'
-alias vag-gs='vagrant global-status'
-
 # ============================================================================ #
