@@ -53,9 +53,9 @@ Plugin 'scrooloose/syntastic'
 " HackerNews plugin
 Plugin 'ryanss/vim-hackernews'
 
-" vim-markdown
+" markdown in vim
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+Plugin 'tpope/vim-markdown'
 
 " fzf for fuzzy file finding
 Plugin 'junegunn/fzf'

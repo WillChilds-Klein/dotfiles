@@ -5,7 +5,7 @@ alias grep='grep --color'
 alias p='ping 8.8.8.8'
 alias ='clear'
 
-function ip() {
+function ips() {
     local esc=$(printf '\033')
     local red="${esc}[31m"
     local green="${esc}[32m"
