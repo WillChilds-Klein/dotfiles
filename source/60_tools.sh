@@ -1,11 +1,11 @@
 # ---------------------------------------------------------------------------- #
 # general tool application aliases
 # ---------------------------------------------------------------------------- #
-alias grep='grep --color'
+alias g='grep --color'
 alias p='ping 8.8.8.8'
 alias ='clear'
 
-function ips() {
+function netinfo() {
     local esc=$(printf '\033')
     local red="${esc}[31m"
     local green="${esc}[32m"
@@ -43,6 +43,9 @@ alias hn='vim +HackerNews'
 
 # alias to correct previous (mistaken) command
 alias fuck='eval $(thefuck $(fc -ln -1))'
+
+# alias for grepping through all files in current dir
+alias lgrep='ls -al | grep -i'
 
 #  src: http://unix.stackexchange.com/a/17308
 highlight () {
