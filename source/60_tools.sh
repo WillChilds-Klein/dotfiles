@@ -172,7 +172,7 @@ alias b2dunenv='unset  DOCKER_TLS_VERIFY && unset  DOCKER_HOST && unset  DOCKER_
 export DOCKER_MACHINE_TOKEN="82c296e80efd35f74e84a8d06b02bb046666e2596d5199677304b0d152460d0e"
 function dockm () {
     if [[ $1 = "switch" ]]; then
-        docker-machine active $2 &&
+        docker-machine active | grep -i $2 &&
         eval $(docker-machine env $2)
         return $?
     elif [[ $1 = "vars" ]]; then
