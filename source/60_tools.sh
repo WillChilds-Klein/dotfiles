@@ -47,6 +47,8 @@ alias fuck='eval $(thefuck $(fc -ln -1))'
 # alias for grepping through all files in current dir
 alias lgrep='ls -al | grep -i'
 
+alias venv='virtualenv'
+
 #  src: http://unix.stackexchange.com/a/17308
 highlight () {
     perl -pe "s/$1/\e[1;31;43m$&\e[0m/g"

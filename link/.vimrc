@@ -47,9 +47,6 @@ Plugin 'tpope/vim-surround'
 " repeat support for plugins
 Plugin 'tpope/vim-repeat'
 
-" syntastic
-Plugin 'scrooloose/syntastic'
-
 " HackerNews plugin
 Plugin 'ryanss/vim-hackernews'
 
@@ -72,6 +69,10 @@ Plugin 'ekalinin/Dockerfile.vim'
 " stuff for fish shell scripts
 Plugin 'dag/vim-fish'
 
+" rich Python autocomplete
+Plugin 'davidhalter/jedi'
+Plugin 'davidhalter/jedi-vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -82,20 +83,6 @@ filetype plugin indent on    " required
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 " Put your non-Plugin stuff after this line
-
-
-" ============ default Syntastic settings ============= "
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_mode_map = { 'mode': 'passive',
-                           \ 'active_filetypes': [],
-                           \ 'passive_filetypes': [] }
 
 
 " =============== General .vimrc stuff ================ "
@@ -169,7 +156,11 @@ nnoremap q <Nop>
 
 " nice syntax highlighting
 syntax on
-colorscheme twilight256
+colorscheme hybrid
+"colorscheme hybrid-light
+
+" disable Background Color Erase so colorshceme bg goes full terminal
+set t_ut=
 
 " activate mouse control if available
 if has("mouse")
@@ -211,9 +202,6 @@ set whichwrap+=<,>,h,l,[,]
 " set qq to ignore changes -> quit
 cabbrev qq q!
 
-" set color scheme
-colorscheme twilight256
-
 " good vim-split behavior
 set splitbelow
 set splitright
@@ -228,3 +216,25 @@ set backspace=indent,eol,start
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_math=1
 let g:vim_markdown_frontmatter=1
+
+" PEP8-compliance
+au BufNewFile,BufRead *.py
+    \ set tabstop=4     |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4  |
+    \ set textwidth=79  |
+    \ set expandtab     |
+    \ set autoindent    |
+
+" remap python autocomplete activation
+let g:jedi#completions_command = "<C-n>"
+
+"virtualenv support for python
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
