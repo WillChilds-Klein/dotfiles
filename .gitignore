@@ -13,6 +13,9 @@
 /link/.vim/bundle/*.vim
 !/link/.vim/bundle/Vundle.vim
 
+# Don't commit .netrwhist
+/link/.vim/.netrwhist
+
 # Ignore any file with LOCAL in the name (good for per-machine vars/functions)
 *LOCAL*
 

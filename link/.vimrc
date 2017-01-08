@@ -30,10 +30,8 @@ Plugin 'gmarik/Vundle.vim'
 " NOTE: no 'foo/' username means plugin is pulled from
 "   http://vim-scripts.org/vikm/scripts.html
 
+" auto wrap HTML tags
 Plugin 'alvan/vim-closetag'
-
-" tomorrow color scheme
-Plugin 'chriskempson/tomorrow-theme'
 
 " hybrid color scheme
 Plugin 'w0ng/vim-hybrid'
@@ -50,6 +48,10 @@ Plugin 'tpope/vim-repeat'
 " HackerNews plugin
 Plugin 'ryanss/vim-hackernews'
 
+" distraction-free writing, toggle with :Goyo
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
+
 " markdown in vim
 Plugin 'godlygeek/tabular'
 Plugin 'tpope/vim-markdown'
@@ -60,23 +62,27 @@ Plugin 'junegunn/fzf'
 " tcomment for managing comments
 Plugin 'scrooloose/nerdcommenter'
 
-" vim-tmux for some sweet tmux tools
+" proper syntax etc. for .tmux.conf
 Plugin 'tmux-plugins/vim-tmux'
 
-" syntax highlighting for Dockerfile
-Plugin 'ekalinin/Dockerfile.vim' 
-
-" stuff for fish shell scripts
-Plugin 'dag/vim-fish'
+" nice status bar at bottom
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " rich Python autocomplete
 Plugin 'davidhalter/jedi'
 Plugin 'davidhalter/jedi-vim'
 
+" better Python folding
+Plugin 'tmhedberg/SimpylFold'
+
+" flake8, run with F7
+Plugin 'nvie/vim-flake8'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" --------- Vundle Plugins End ----------- " 
+" --------- Vundle Plugins End ----------- "
 " Brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
@@ -93,26 +99,25 @@ nnoremap <Leader>w :w<CR>
 " quick quit
 nnoremap <Leader>q :q<CR>
 " quick force quit
-nnoremap <Leader>qf :q!<CR>
+nnoremap <Leader>qq :q!<CR>
 " quick write+quit
 nnoremap <Leader>wq :wq<CR>
 " <Leader>-b to invoke make with target of current file's basename
-"nnoremap <Leader>b :silent make %:r\|redraw!\|cw<CR>
-nnoremap <Leader>b :make<CR>:copen<CR>
+nnoremap <Leader>b :silent make %:r\|redraw!\|cw<CR>
 " in vim, <Leader>v to edit .vimrc in new tab
-nnoremap <Leader>n :HackerNews<CR>
 nnoremap <Leader>v :tabe $VIMRC<CR>
+nnoremap <Leader>n :HackerNews<CR>
 " auto source .vimrc when its buffer is written to
 autocmd bufwritepost .vimrc source $VIMRC
 " use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
-" hide buffer instead of closing 
+" hide buffer instead of closing
 set hidden
 " Optimize for fast terminal connections
 set ttyfast
 " Highlight dynamically as pattern is typed
 set incsearch
-" Show “invisible” characters
+ "Show “invisible” characters
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 " show whitespac chars
 set list
@@ -153,11 +158,12 @@ nnoremap k gk
 nnoremap Q q
 nnoremap q <Nop>
 
+" use UTF-8
+set encoding=utf-8
 
 " nice syntax highlighting
 syntax on
 colorscheme hybrid
-"colorscheme hybrid-light
 :command! Light colorscheme hybrid-light
 :command! Dark colorscheme hybrid
 
@@ -234,19 +240,39 @@ let g:closetag_filenames = "*.html,*.xml"
 " correct backspace behavior
 set backspace=indent,eol,start
 
+" vim-airline always on
+set laststatus=2
+
+" cold folding config
+set foldmethod=indent
+set foldlevel=99
+let g:SimpylFold_docstring_preview=1
+nnoremap <Leader><Space> za
+
 " vim-markdown config
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_math=1
 let g:vim_markdown_frontmatter=1
 
+" copule LimeLight with Goyo
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+" sensible defaults for frontend
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+
 " PEP8-compliance
 au BufNewFile,BufRead *.py
-    \ set tabstop=4     |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4  |
-    \ set textwidth=79  |
-    \ set expandtab     |
-    \ set autoindent    |
+    \ set tabstop=4       |
+    \ set softtabstop=4   |
+    \ set shiftwidth=4    |
+    \ set textwidth=79    |
+    \ set expandtab       |
+    \ set autoindent      |
+    \ set fileformat=unix |
 
 " remap python autocomplete activation
 let g:jedi#completions_command = "<C-n>"

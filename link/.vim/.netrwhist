@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/Users/will/work/classes'
-let g:netrw_dirhist_2='/Users/will/.digitalocean'
-let g:netrw_dirhist_3='/Users/will/work/code/projectifi'
-let g:netrw_dirhist_4='/Users/will/work/code/projectifi/projectifi'
-let g:netrw_dirhist_5='/Users/will/.bash_sessions'
