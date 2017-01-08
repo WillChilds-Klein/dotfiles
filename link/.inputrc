@@ -14,8 +14,8 @@ $if mode=vi
     ###########################################################
     # Keymaps for when we're in insert (i.e., typing stuff in) mode
     set keymap vi-insert
-    
-   #  clear screen
+
+    # clear screen
     "\C-l": "\e\C-la"
 
     # map "jk" to exit insert mode

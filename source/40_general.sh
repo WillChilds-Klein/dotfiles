@@ -23,6 +23,9 @@ export EDITOR="vim -e"
 export PAGER="less"
 export TERM="xterm-256color"
 
+# source pythonrc
+export PYTHONSTARTUP=$HOME/.pythonrc.py
+
 # append to the Bash history file, rather than overwriting it
 shopt -s histappend
 

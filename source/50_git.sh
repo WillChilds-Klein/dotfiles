@@ -36,3 +36,6 @@ function gcomp() {
         done
     fi
 }
+
+# init git-hub cli stuff
+source ~/work/code/github/git-hub/.rc

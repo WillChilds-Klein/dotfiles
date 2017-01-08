@@ -1,9 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/will/work/classes/cpsc490/tools/coreos-vagrant'
-let g:netrw_dirhist_2='/Users/will/work/code/go/src/github.com/pachyderm/chess/output'
-let g:netrw_dirhist_3='/Users/will/work/code/go/src/github.com/pachyderm/chess/image'
-let g:netrw_dirhist_4='/Users/will/Library/Application Support/Sublime Text 3'
-let g:netrw_dirhist_5='/Users/will/work/classes/hsar373/final-paper/data-fetcher/data'
-let g:netrw_dirhist_6='/Users/will/work/classes/cpsc490/code/anonmr/scripts'
-let g:netrw_dirhist_7='/Users/will/work/classes/cpsc490/code/anonmr/mistress-mapreduce/input'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/will/work/classes'
+let g:netrw_dirhist_2='/Users/will/.digitalocean'
+let g:netrw_dirhist_3='/Users/will/work/code/projectifi'
+let g:netrw_dirhist_4='/Users/will/work/code/projectifi/projectifi'
+let g:netrw_dirhist_5='/Users/will/.bash_sessions'

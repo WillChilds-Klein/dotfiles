@@ -47,7 +47,9 @@ alias fuck='eval $(thefuck $(fc -ln -1))'
 # alias for grepping through all files in current dir
 alias lgrep='ls -al | grep -i'
 
-alias venv='virtualenv'
+VENV_NAME='.venv'
+alias venv='virtualenv .venv'
+alias activate='source ./.venv/bin/activate'
 
 #  src: http://unix.stackexchange.com/a/17308
 highlight () {
@@ -185,7 +187,28 @@ function dockm () {
         return $?
     fi
 }
-# ============================================================================ #k
+# ============================================================================ #
+
+
+
+# ============================================================================ #
+# Notes
+# ============================================================================ #
+function n () {
+    local notes_dir='/Users/will/notes'
+    local name="${1}"
+    if [[ -z $name ]]; then
+        echo "NOTES"
+        echo "-----"
+        local notes="$(ls ${notes_dir})"
+        for note in $notes; do
+            echo ${note} | cut -d'.' -f1
+        done
+        return
+    fi
+    vim "${notes_dir}/${name}.md"
+}
+# ============================================================================ #
 
 
 
@@ -196,13 +219,6 @@ is_osx || return $?
 # ---------------------------------------------------------------------------- #
 # add aws bin directory to PATH
 export PATH=$PATH:/usr/local/aws/bin
-
-# export env vars
-export AWS_CONFIG_FILE=~/.aws/config
-export AWS_DEFAULT_PROFILE=default
-export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)
-export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
-#export AWS_DEFAULT_REGION=$(aws configure get region)
 
 # set bash autocompletion
 complete -C '/usr/local/bin/aws_completer' aws

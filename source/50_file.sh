@@ -31,7 +31,7 @@ alias dirsize="du -ch"
 alias df="df -h"
 
 # Recursively delete `.DS_Store` files
-alias dsstore="find . -name '*.DS_Store' -type f -ls -delete"
+#alias dsstore="find . -name '*.DS_Store' -type f -ls -delete"
 
 # shorthand filesystem nav
 alias ..='cd ..'
@@ -53,14 +53,14 @@ alias godir='cd $GOPATH/ && ll'
 alias dedis='cd $GOPATH/src/github.com/dedis && ll'
 
 # dotfile editing and immediate sourcing/updating
-alias srcgen='vim $DOTFILES/source/40_general.sh && src 40_general'
-alias srcfile='vim $DOTFILES/source/50_file.sh && src 50_file'
-alias srcprompt='vim $DOTFILES/source/50_bash_prompt.sh && src 50_bash_prompt'
-alias srcgit='vim $DOTFILES/source/50_git.sh && src 50_git'
-alias srcosx='vim $DOTFILES/source/50_osx.sh && src 50_osx'
-alias srcubuntu='vim $DOTFILES/source/50_ubuntu.sh && src 50_ubuntu'
-alias srczoo='vim $DOTFILES/source/50_zoo.sh && src 50_zoo'
-alias srctools='vim $DOTFILES/source/60_tools.sh && src 60_tools'
+alias srcgen='vim $DOTFILES/source/40_general.sh && src general'
+alias srcfile='vim $DOTFILES/source/50_file.sh && src file'
+alias srcprompt='vim $DOTFILES/source/50_bash_prompt.sh && src bash_prompt'
+alias srcgit='vim $DOTFILES/source/50_git.sh && src git'
+alias srcosx='vim $DOTFILES/source/50_osx.sh && src osx'
+alias srcubuntu='vim $DOTFILES/source/50_ubuntu.sh && src ubuntu'
+alias srczoo='vim $DOTFILES/source/50_zoo.sh && src zoo'
+alias srctools='vim $DOTFILES/source/60_tools.sh && src tools'
 
 # edit rc/conf files. 
 alias inputrc='vim $DOTFILES/link/.inputrc'

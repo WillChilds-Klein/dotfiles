@@ -27,10 +27,10 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" twilight color scheme
 " NOTE: no 'foo/' username means plugin is pulled from
 "   http://vim-scripts.org/vikm/scripts.html
-Plugin 'twilight256.vim'
+
+Plugin 'alvan/vim-closetag'
 
 " tomorrow color scheme
 Plugin 'chriskempson/tomorrow-theme'
@@ -158,6 +158,8 @@ nnoremap q <Nop>
 syntax on
 colorscheme hybrid
 "colorscheme hybrid-light
+:command! Light colorscheme hybrid-light
+:command! Dark colorscheme hybrid
 
 " disable Background Color Erase so colorshceme bg goes full terminal
 set t_ut=
@@ -202,12 +204,32 @@ set whichwrap+=<,>,h,l,[,]
 " set qq to ignore changes -> quit
 cabbrev qq q!
 
+" <C>-t to activate fzf
+nnoremap <C-T> :FZF<CR>
+" enable FZF keybindings
+let g:fzf_action = {
+    \ 'ctrl-m': 'e',
+    \ 'ctrl-t': 'tabedit'}
+
+
 " good vim-split behavior
 set splitbelow
 set splitright
 
+" easier split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " disable auto comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" autocomplete tags in html files
+"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+
+" file types for vim-closetags
+let g:closetag_filenames = "*.html,*.xml"
 
 " correct backspace behavior
 set backspace=indent,eol,start
@@ -229,7 +251,7 @@ au BufNewFile,BufRead *.py
 " remap python autocomplete activation
 let g:jedi#completions_command = "<C-n>"
 
-"virtualenv support for python
+"virtualenv support for python/jedi
 py << EOF
 import os
 import sys

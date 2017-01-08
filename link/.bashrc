@@ -11,7 +11,7 @@ export PATH
 function src() {
   local file
   if [[ "$1" ]]; then
-    source "$DOTFILES/source/$1.sh"
+      source "$(find $DOTFILES/source/*_${1}.sh)"
   else
     for file in $DOTFILES/source/*; do
       source "$file"
@@ -26,5 +26,3 @@ function dotfiles() {
 
 src
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

@@ -17,10 +17,8 @@
 
 [alias]
     # aliases from https://github.com/durdn/cfg/blob/master/.gitconfig
-    st = status -s
-
+    st = status
     cl = clone
-
     ci = commit
     cm = commit -m
     cma = commit -a -m
@@ -116,3 +114,13 @@
 
     #add bitbucket remote
     ra = "!f() { git remote add $1 https://bitbucket.org/$2.git; }; f"
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[core]
+	pager = diff-highlight | diff-so-fancy | less --tabs=1,5 -R
