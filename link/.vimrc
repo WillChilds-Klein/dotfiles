@@ -36,6 +36,9 @@ Plugin 'alvan/vim-closetag'
 " hybrid color scheme
 Plugin 'w0ng/vim-hybrid'
 
+" solarized color scheme
+Plugin 'altercation/vim-colors-solarized'
+
 " vim-go for go stuff
 Plugin 'fatih/vim-go'
 
@@ -106,9 +109,7 @@ nnoremap <Leader>wq :wq<CR>
 nnoremap <Leader>b :silent make %:r\|redraw!\|cw<CR>
 " in vim, <Leader>v to edit .vimrc in new tab
 nnoremap <Leader>v :tabe $VIMRC<CR>
-nnoremap <Leader>n :HackerNews<CR>
-" auto source .vimrc when its buffer is written to
-autocmd bufwritepost .vimrc source $VIMRC
+nnoremap <Leader>n :tabnew<CR>:HackerNews<CR>
 " use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
 " hide buffer instead of closing
@@ -118,7 +119,7 @@ set ttyfast
 " Highlight dynamically as pattern is typed
 set incsearch
  "Show “invisible” characters
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+set lcs=tab:▸\ ,trail:·,nbsp:_
 " show whitespac chars
 set list
 " Highlight searches
@@ -161,11 +162,17 @@ nnoremap q <Nop>
 " use UTF-8
 set encoding=utf-8
 
-" nice syntax highlighting
+" set solarized color palette to full 256
+let g:solarized_termcolors=256
+
+" nice syntax highlighting, default to hybrid dark.
 syntax on
 colorscheme hybrid
-:command! Light colorscheme hybrid-light
-:command! Dark colorscheme hybrid
+set background=dark
+
+" swich between light and dark setup
+:command! Dark colorscheme hybrid | set background=dark
+:command! Light colorscheme solarized | set background=light
 
 " disable Background Color Erase so colorshceme bg goes full terminal
 set t_ut=
@@ -185,7 +192,6 @@ silent! nunmap ;
 silent! nunmap :
 nnoremap <unique> ; :
 nnoremap <unique> : ;
-" TODO: map ';;' to exit-insert && ';'
 
 " http://vimdoc.sourceforge.net/htmldoc/eval.html#last-position-jump
 "   This autocommand jumps to the last known position in a file
@@ -210,13 +216,10 @@ set whichwrap+=<,>,h,l,[,]
 " set qq to ignore changes -> quit
 cabbrev qq q!
 
+" use ag as source to get source filtering for free
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 " <C>-t to activate fzf
 nnoremap <C-T> :FZF<CR>
-" enable FZF keybindings
-let g:fzf_action = {
-    \ 'ctrl-m': 'e',
-    \ 'ctrl-t': 'tabedit'}
-
 
 " good vim-split behavior
 set splitbelow
@@ -228,10 +231,13 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" auto source .vimrc when its buffer is written to
+autocmd bufwritepost .vimrc source $VIMRC
+
 " disable auto comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" autocomplete tags in html files
+" autocomplete tags in html files TODO
 "autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
 " file types for vim-closetags
@@ -249,10 +255,14 @@ set foldlevel=99
 let g:SimpylFold_docstring_preview=1
 nnoremap <Leader><Space> za
 
+" autowrap commit msgs
+au FileType gitcommit set tw=72
+
 " vim-markdown config
 let g:vim_markdown_folding_disabled=1
 let g:vim_markdown_math=1
 let g:vim_markdown_frontmatter=1
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 
 " copule LimeLight with Goyo
 autocmd! User GoyoEnter Limelight
