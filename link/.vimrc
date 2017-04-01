@@ -42,6 +42,8 @@ Plugin 'altercation/vim-colors-solarized'
 " vim-go for go stuff
 Plugin 'fatih/vim-go'
 
+Plugin 'rhysd/vim-crystal'
+
 " vim-surround for easy brackets etc
 Plugin 'tpope/vim-surround'
 
@@ -255,8 +257,9 @@ set foldlevel=99
 let g:SimpylFold_docstring_preview=1
 nnoremap <Leader><Space> za
 
-" autowrap commit msgs
+" autowrap commit msgs, markdown
 au FileType gitcommit set tw=72
+au BufRead,BufNewFile *.md setlocal textwidth=80
 
 " vim-markdown config
 let g:vim_markdown_folding_disabled=1

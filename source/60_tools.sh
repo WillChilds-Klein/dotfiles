@@ -47,8 +47,7 @@ alias fuck='eval $(thefuck $(fc -ln -1))'
 # alias for grepping through all files in current dir
 alias lgrep='ls -al | grep -i'
 
-VENV_NAME='.venv'
-alias venv='virtualenv .venv'
+alias venv='virtualenv .venv && . ./.venv/bin/activate'
 alias activate='source ./.venv/bin/activate'
 
 #  src: http://unix.stackexchange.com/a/17308
