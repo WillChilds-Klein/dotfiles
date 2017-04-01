@@ -10,6 +10,9 @@ alias osx='vim $DOTFILES/source/50_osx.sh && src'
 # allow character repeats by holding down key
 defaults write com.sublimetext.3 ApplePressAndHoldEnabled -bool false
 
+# source bash completion script
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
 # application aliases
 alias showDotfiles='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
 alias hideDotfiles='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
