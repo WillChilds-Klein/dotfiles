@@ -271,6 +271,10 @@ let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
+" ruby syntax for Vagrantfile
+au BufNewFile,BufRead Vagrantfile
+    \ set syntax=ruby
+
 " sensible defaults for frontend
 au BufNewFile,BufRead *.js, *.html, *.css
     \ set tabstop=2

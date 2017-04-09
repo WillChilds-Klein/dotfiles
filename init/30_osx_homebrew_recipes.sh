@@ -15,6 +15,7 @@ recipes=(
   ssh-copy-id
   tree
   urlview
+  vagrant-completion
 )
 
 brew_install_recipes
