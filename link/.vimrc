@@ -64,6 +64,9 @@ Plugin 'tpope/vim-markdown'
 " fzf for fuzzy file finding
 Plugin 'junegunn/fzf'
 
+" honor direnv var export in vim and set .envrc filetype=sh
+Plugin 'direnv/direnv.vim'
+
 " tcomment for managing comments
 Plugin 'scrooloose/nerdcommenter'
 
@@ -103,8 +106,6 @@ map <Space> <Leader>
 nnoremap <Leader>w :w<CR>
 " quick quit
 nnoremap <Leader>q :q<CR>
-" quick force quit
-nnoremap <Leader>qq :q!<CR>
 " quick write+quit
 nnoremap <Leader>wq :wq<CR>
 " <Leader>-b to invoke make with target of current file's basename
@@ -157,9 +158,9 @@ set copyindent
 " on wrapped lines, don't jump to next acual line
 nnoremap j gj
 nnoremap k gk
-" remap recording to Q. q just gets in the way
-nnoremap Q q
-nnoremap q <Nop>
+
+" Ex mode is fucking useless
+nnoremap Q :q!<CR>
 
 " use UTF-8
 set encoding=utf-8
@@ -188,22 +189,19 @@ endif
 imap jk <Esc>
 vmap jk <Esc>
 
-" remap ; to :
-cnoremap <expr> ; getcmdpos() == 1 ? '<C-F>A' : ';'
-silent! nunmap ;
-silent! nunmap :
-nnoremap <unique> ; :
-nnoremap <unique> : ;
-
-" http://vimdoc.sourceforge.net/htmldoc/eval.html#last-position-jump
-"   This autocommand jumps to the last known position in a file
-"   just after opening it, if the '"' mark is set:
-:au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+" sensible ; --> : mapping
+map ; :
+noremap ;; ;
 
 " highlight search results
 set hlsearch
 " silently unhighlight search on 'jk'
 nnoremap <silent> jk :nohlsearch<CR>
+
+" http://vimdoc.sourceforge.net/htmldoc/eval.html#last-position-jump
+"   This autocommand jumps to the last known position in a file
+"   just after opening it, if the '"' mark is set:
+:au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 " faster timeout time to eliminate cursor lag on 'jk'
 " NOTE: default is 1000, which causes annoying lag
@@ -240,10 +238,10 @@ autocmd bufwritepost .vimrc source $VIMRC
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " autocomplete tags in html files TODO
-"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html js set omnifunc=htmlcomplete#CompleteTags
 
 " file types for vim-closetags
-let g:closetag_filenames = "*.html,*.xml"
+let g:closetag_filenames = "*.html,*.xml,*.js"
 
 " correct backspace behavior
 set backspace=indent,eol,start
@@ -259,7 +257,7 @@ nnoremap <Leader><Space> za
 
 " autowrap commit msgs, markdown
 au FileType gitcommit set tw=72
-au BufRead,BufNewFile *.md setlocal textwidth=80
+au FileType md set tw=80
 
 " vim-markdown config
 let g:vim_markdown_folding_disabled=1
@@ -267,7 +265,7 @@ let g:vim_markdown_math=1
 let g:vim_markdown_frontmatter=1
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 
-" copule LimeLight with Goyo
+" couple LimeLight with Goyo
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
@@ -275,18 +273,20 @@ autocmd! User GoyoLeave Limelight!
 au BufNewFile,BufRead Vagrantfile
     \ set syntax=ruby
 
-" sensible defaults for frontend
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
-
 " PEP8-compliance
 au BufNewFile,BufRead *.py
     \ set tabstop=4       |
     \ set softtabstop=4   |
     \ set shiftwidth=4    |
     \ set textwidth=79    |
+    \ set expandtab       |
+    \ set autoindent      |
+    \ set fileformat=unix |
+
+autocmd BufRead,BufNewFile *.html,*.js,*.css
+    \ set tabstop=2       |
+    \ set softtabstop=2   |
+    \ set shiftwidth=2    |
     \ set expandtab       |
     \ set autoindent      |
     \ set fileformat=unix |

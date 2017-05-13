@@ -9,6 +9,7 @@ recipes=(
   bash
   bash-completion
   cowsay
+  direnv
   git
   htop-osx
   nmap

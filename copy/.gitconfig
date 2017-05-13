@@ -44,8 +44,7 @@
     lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
     #list all aliases
     la = "!git config -l | grep alias | cut -c 7-"
-    diff = diff --word-diff
-    d = diff --word-diff
+    d = "!d() { git diff $@ | diff-highlight | diff-so-fancy; }; d"
     dc = diff --cached
     #list modified files in last commit
     dl = "!git ll -1"
@@ -122,5 +121,8 @@
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
 	required = true
+[pager]
+    d = true
 [core]
-	pager = diff-highlight | diff-so-fancy | less --tabs=1,5 -R
+    pager = less --tabs=1,5 -R
+	excludesfile = ~/.gitignore_global

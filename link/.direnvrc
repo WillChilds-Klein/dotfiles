@@ -1,0 +1,17 @@
+# Define a function in .envrc, and use export_function to turn into a bash
+# binary on the direnv's $PATH.
+export_function() {
+  local name="$1"
+  local alias_dir="$PWD/.direnv/aliases"
+  mkdir -p "$alias_dir"
+  PATH_add "$alias_dir"
+  local target="$alias_dir/$name"
+  # is $name defined as a funciton in current env?
+  if declare -f "$name" > /dev/null; then
+    # great! append a shebang and $name's definition to $target
+    echo "#!/usr/bin/env bash" > "$target"
+    declare -f "$name" >> "$target" 2>/dev/null
+    echo "$name \$@" >> "$target"   # tell $target to invoke $name after defining.
+    chmod +x "$target"
+  fi
+}

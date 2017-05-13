@@ -263,3 +263,14 @@ PS1="\[$prompt_user_color\]\u\[$prompt_reset\] \
   echo -n \"\[$prompt_git_progress_color\]\$(get_git_progress)\" && \
   echo -n \"\[$prompt_preposition_color\]\")\n\[$prompt_reset\]\
 \[$prompt_symbol_color\]$(get_prompt_symbol) \[$prompt_reset\]"
+
+# direnv stuff
+eval "$(direnv hook bash)"
+
+show_virtual_env() {
+  if [ -n "$VIRTUAL_ENV" ]; then
+    echo "($(basename $VIRTUAL_ENV)) "
+  fi
+}
+
+PS1='$(show_virtual_env)'$PS1

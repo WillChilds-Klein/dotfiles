@@ -19,7 +19,7 @@ export LOCALHOST="127.0.0.1"
 
 # default application env variables
 export VISUAL="vim"
-export EDITOR="vim -e"
+export EDITOR="vim"
 export PAGER="less"
 export TERM="xterm-256color"
 
@@ -28,6 +28,10 @@ export PYTHONSTARTUP=$HOME/.pythonrc.py
 
 # append to the Bash history file, rather than overwriting it
 shopt -s histappend
+
+# unlimited bash history
+export HISTCONTROL=erasedups
+export HISTSIZE=1000000
 
 # function to report exit status of previous command
 function status() {

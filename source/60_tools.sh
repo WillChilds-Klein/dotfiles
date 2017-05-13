@@ -22,7 +22,7 @@ function netinfo() {
 }
 
 # ensure tpm is there
-if ! [[ -d ~/.tmux/plugins/tpm ]]; then 
+if ! [[ -d ~/.tmux/plugins/tpm ]]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     echo "tpm repo cloned, hit <prefix>r then <prefix>I to install plugins!"
 fi
@@ -61,7 +61,7 @@ function manc () {
 }
 
 # easy search for switch in man
-function mansw () { 
+function mansw () {
     man $1 | less -p "^ +$2";
 }
 
@@ -85,6 +85,28 @@ alias tmux-colors='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i}\n"; 
 # alias for launching tterm session
 alias tmux-tterm='tmux a -t tterm || tmux new -s tterm && tmux source-file ~/.tmux/tterm.conf'
 
+tx() {
+    # if direnv is present, use it to execute tmux to avoid env variable mangling.
+    which direnv &>/dev/null \
+        && local direnv_prefix="direnv exec / tmux"
+    local tmux=${direnv_prefix:-"tmux"}
+    local cmd="$1"; shift;
+    case "$cmd" in
+        a)
+            $tmux attach -t "$1"
+            ;;
+        k)
+            $tmux kill-session -t "$1"
+            ;;
+        n)
+            $tmux new-session -s "$1"
+            ;;
+        *)
+            $tmux "$cmd" $@
+            ;;
+    esac
+}
+
 # less options to be used always
 export LESS='-asRi'
 export LESSOPEN='|~/.lessfilter %s'
@@ -93,7 +115,7 @@ export LESSOPEN='|~/.lessfilter %s'
 
 
 # ---------------------------------------------------------------------------- #
-# FZF 
+# FZF
 # ---------------------------------------------------------------------------- #
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 # ============================================================================ #
@@ -198,7 +220,7 @@ function n () {
 is_osx || return $?
 
 # ---------------------------------------------------------------------------- #
-# AWS 
+# AWS
 # ---------------------------------------------------------------------------- #
 # add aws bin directory to PATH
 export PATH=$PATH:/usr/local/aws/bin
