@@ -130,23 +130,6 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 # ============================================================================ #
 
 
-
-# ---------------------------------------------------------------------------- #
-# Digital Ocean
-# ---------------------------------------------------------------------------- #
-# function to set auth env vars
-function digitalocean_set_env () {
-    echo "setting env variables for DigitalOcean auth"
-    export TOKEN="$(cat ~/.digitalocean/athena_access_token)"
-    export SSH_KEY_NAME="$(cat ~/.digitalocean/ssh_key_name)"
-    export NUM_INSTANCES=${1:-"3"}
-    echo "done."
-}
-# ============================================================================ #
-
-
-
-
 # ---------------------------------------------------------------------------- #
 # Terminal Color Variables
 # ---------------------------------------------------------------------------- #
@@ -169,31 +152,6 @@ TERM_MAGENTA="${esc}[35m";
 TERM_CYAN="${esc}[36m";
 TERM_NONE="${esc}[0m";
 # ============================================================================ #
-
-
-# ---------------------------------------------------------------------------- #
-# Docker
-# ---------------------------------------------------------------------------- #
-alias b2d='boot2docker'
-alias b2denv='eval $(boot2docker shellinit)'
-alias b2dunenv='unset  DOCKER_TLS_VERIFY && unset  DOCKER_HOST && unset  DOCKER_CERT_PATH'
-
-export DOCKER_MACHINE_TOKEN="82c296e80efd35f74e84a8d06b02bb046666e2596d5199677304b0d152460d0e"
-function dockm () {
-    if [[ $1 = "switch" ]]; then
-        docker-machine active | grep -i $2 &&
-        eval $(docker-machine env $2)
-        return $?
-    elif [[ $1 = "vars" ]]; then
-        eval $(docker-machine env $2)
-        return $?
-    else
-        docker-machine $@
-        return $?
-    fi
-}
-# ============================================================================ #
-
 
 
 # ============================================================================ #
