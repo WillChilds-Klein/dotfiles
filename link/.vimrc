@@ -39,10 +39,10 @@ Plugin 'w0ng/vim-hybrid'
 " solarized color scheme
 Plugin 'altercation/vim-colors-solarized'
 
-" vim-go for go stuff
+" language-specific plugins
 Plugin 'fatih/vim-go'
-
 Plugin 'rhysd/vim-crystal'
+Plugin 'mxw/vim-jsx'
 
 " vim-surround for easy brackets etc
 Plugin 'tpope/vim-surround'
@@ -243,6 +243,18 @@ autocmd FileType html js set omnifunc=htmlcomplete#CompleteTags
 " file types for vim-closetags
 let g:closetag_filenames = "*.html,*.xml,*.js"
 
+" web filetype configurations
+autocmd BufRead,BufNewFile *.html,*.js,*.css
+    \ set tabstop=2       |
+    \ set softtabstop=2   |
+    \ set shiftwidth=2    |
+    \ set expandtab       |
+    \ set autoindent      |
+    \ set fileformat=unix |
+
+" allow jsx syntax highlighting in *.js
+let g:jsx_ext_required = 0
+
 " correct backspace behavior
 set backspace=indent,eol,start
 
@@ -279,14 +291,6 @@ au BufNewFile,BufRead *.py
     \ set softtabstop=4   |
     \ set shiftwidth=4    |
     \ set textwidth=79    |
-    \ set expandtab       |
-    \ set autoindent      |
-    \ set fileformat=unix |
-
-autocmd BufRead,BufNewFile *.html,*.js,*.css
-    \ set tabstop=2       |
-    \ set softtabstop=2   |
-    \ set shiftwidth=2    |
     \ set expandtab       |
     \ set autoindent      |
     \ set fileformat=unix |
