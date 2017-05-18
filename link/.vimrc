@@ -25,7 +25,7 @@ call vundle#begin()
 " > Plugin 'user/L9', {6F'name': 'newL9'}
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " NOTE: no 'foo/' username means plugin is pulled from
 "   http://vim-scripts.org/vikm/scripts.html
