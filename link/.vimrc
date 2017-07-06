@@ -192,6 +192,7 @@ vmap jk <Esc>
 " sensible ; --> : mapping
 map ; :
 noremap ;; ;
+"noremap :: TODO make this be to ';;' what 'F' is to 'f'
 
 " highlight search results
 set hlsearch
@@ -295,8 +296,10 @@ au BufNewFile,BufRead *.py
     \ set autoindent      |
     \ set fileformat=unix |
 
-" remap python autocomplete activation
-let g:jedi#completions_command = "<C-n>"
+let g:jedi#completions_command = "<C-n>"    " same as omnicomplete
+let g:jedi#use_tabs_not_buffers = 1         " tab out for easy nav
+let g:jedi#popup_on_dot = 0                 " don't be automatic
+let g:jedi#show_call_signatures = 2         " show sigs in cmd bar
 
 "virtualenv support for python/jedi
 py << EOF

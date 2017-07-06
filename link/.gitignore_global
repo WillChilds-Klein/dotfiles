@@ -67,3 +67,6 @@ Desktop.ini
 # direnv
 .envrc
 .direnv/
+
+# virtualenv
+.venv/

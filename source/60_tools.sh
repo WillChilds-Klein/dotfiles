@@ -47,8 +47,8 @@ alias fuck='eval $(thefuck $(fc -ln -1))'
 # alias for grepping through all files in current dir
 alias lgrep='ls -al | grep -i'
 
-alias venv='virtualenv .venv && . ./.venv/bin/activate'
-alias activate='source ./.venv/bin/activate'
+alias activate='. ./.venv/bin/activate'
+alias venv='virtualenv .venv && activate'
 
 #  src: http://unix.stackexchange.com/a/17308
 highlight () {
@@ -90,19 +90,22 @@ tx() {
     which direnv &>/dev/null \
         && local direnv_prefix="direnv exec / tmux"
     local tmux=${direnv_prefix:-"tmux"}
-    local cmd="$1"; shift;
+    local cmd="${1}"
     case "$cmd" in
         a)
-            $tmux attach -t "$1"
+            $tmux attach -t "$2"
             ;;
         k)
-            $tmux kill-session -t "$1"
+            $tmux kill-session -t "$2"
             ;;
         n)
-            $tmux new-session -s "$1"
+            $tmux new-session -s "$2"
+            ;;
+        ls)
+            $tmux list-sessions
             ;;
         *)
-            $tmux "$cmd" $@
+            $tmux $cmd $@
             ;;
     esac
 }

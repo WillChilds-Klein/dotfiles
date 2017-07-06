@@ -29,9 +29,13 @@ export PYTHONSTARTUP=$HOME/.pythonrc.py
 # append to the Bash history file, rather than overwriting it
 shopt -s histappend
 
-# unlimited bash history
-export HISTCONTROL=erasedups
+# yuge bash history, no dupes
 export HISTSIZE=1000000
+export HISTFILESIZE=100000
+export HISTCONTROL=ignoredups:erasedups
+
+# re-read history file on every prompt
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # function to report exit status of previous command
 function status() {
