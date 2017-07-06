@@ -90,22 +90,25 @@ tx() {
     which direnv &>/dev/null \
         && local direnv_prefix="direnv exec / tmux"
     local tmux=${direnv_prefix:-"tmux"}
-    local cmd="${1}"
+    local cmd="${1}"; shift;
     case "$cmd" in
         a)
-            $tmux attach -t "$2"
+            $tmux attach -t "$1"
             ;;
         k)
-            $tmux kill-session -t "$2"
+            $tmux kill-session -t "$1"
             ;;
         n)
-            $tmux new-session -s "$2"
+            $tmux new-session -s "$1"
             ;;
         ls)
             $tmux list-sessions
             ;;
+        ks)
+            $tmux kill-server
+            ;;
         *)
-            $tmux $cmd $@
+            $tmux $cmd ${@}
             ;;
     esac
 }
