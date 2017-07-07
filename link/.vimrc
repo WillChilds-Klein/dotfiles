@@ -113,6 +113,14 @@ nnoremap <Leader>b :silent make %:r\|redraw!\|cw<CR>
 " in vim, <Leader>v to edit .vimrc in new tab
 nnoremap <Leader>v :tabe $VIMRC<CR>
 nnoremap <Leader>n :tabnew<CR>:HackerNews<CR>
+" tab navigation
+nnoremap <Leader>t gt
+nnoremap <Leader>T gT
+nnoremap <Leader>1 1gt
+nnoremap <Leader>2 2gt
+nnoremap <Leader>3 3gt
+nnoremap <Leader>4 4gt
+nnoremap <Leader>5 5gt
 " use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
 " hide buffer instead of closing
@@ -145,7 +153,7 @@ set number
 set ruler
 " insert space characters when tab is pressed
 set expandtab
-" Make tabs as wide as two spaces
+" Make tabs as wide as 4 spaces
 set tabstop=4
 " number of space chars for indentation
 set shiftwidth=4
@@ -245,7 +253,7 @@ autocmd FileType html js set omnifunc=htmlcomplete#CompleteTags
 let g:closetag_filenames = "*.html,*.xml,*.js"
 
 " web filetype configurations
-autocmd BufRead,BufNewFile *.html,*.js,*.css
+autocmd BufRead,BufNewFile *.html,*.js,*.css, *.yaml, *.yml
     \ set tabstop=2       |
     \ set softtabstop=2   |
     \ set shiftwidth=2    |
