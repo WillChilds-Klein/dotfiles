@@ -253,7 +253,7 @@ autocmd FileType html js set omnifunc=htmlcomplete#CompleteTags
 let g:closetag_filenames = "*.html,*.xml,*.js"
 
 " web filetype configurations
-autocmd BufRead,BufNewFile *.html,*.js,*.css, *.yaml, *.yml
+autocmd BufRead,BufNewFile *.html,*.js,*.css,*.yaml,*.yml
     \ set tabstop=2       |
     \ set softtabstop=2   |
     \ set shiftwidth=2    |
