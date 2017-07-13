@@ -42,6 +42,7 @@ Plugin 'altercation/vim-colors-solarized'
 " language-specific plugins
 Plugin 'fatih/vim-go'
 Plugin 'rhysd/vim-crystal'
+Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 
 " vim-surround for easy brackets etc
@@ -121,6 +122,8 @@ nnoremap <Leader>2 2gt
 nnoremap <Leader>3 3gt
 nnoremap <Leader>4 4gt
 nnoremap <Leader>5 5gt
+" easy find/replace
+nnoremap <Leader>s :%s//g<LEFT><LEFT>
 " use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
 " hide buffer instead of closing
@@ -153,8 +156,9 @@ set number
 set ruler
 " insert space characters when tab is pressed
 set expandtab
-" Make tabs as wide as 4 spaces
+" Make tabs as wide as four spaces, make <BS> follow that too
 set tabstop=4
+set softtabstop=4
 " number of space chars for indentation
 set shiftwidth=4
 " no more damn .swp files
@@ -241,25 +245,29 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " auto source .vimrc when its buffer is written to
-autocmd bufwritepost .vimrc source $VIMRC
+autocmd BufWritePost .vimrc
+    \ source $VIMRC     |
 
-" disable auto comment insertion
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" disable auto comment insertion, except when line is wrapped.
+autocmd FileType *
+    \ setlocal formatoptions-=r     |
+    \ setlocal formatoptions-=o     |
+    \ setlocal formatoptions+=c     |
 
-" autocomplete tags in html files TODO
-autocmd FileType html js set omnifunc=htmlcomplete#CompleteTags
+" complete tags on web files
+autocmd FileType html,js,jsx
+    \ set omnifunc=htmlcomplete#CompleteTags    |
 
 " file types for vim-closetags
 let g:closetag_filenames = "*.html,*.xml,*.js"
 
 " web filetype configurations
 autocmd BufRead,BufNewFile *.html,*.js,*.css,*.yaml,*.yml
-    \ set tabstop=2       |
-    \ set softtabstop=2   |
-    \ set shiftwidth=2    |
-    \ set expandtab       |
-    \ set autoindent      |
-    \ set fileformat=unix |
+    \ setlocal tabstop=2        |
+    \ setlocal softtabstop=2    |
+    \ setlocal shiftwidth=2     |
+    \ setlocal expandtab        |
+    \ setlocal fileformat=unix  |
 
 " allow jsx syntax highlighting in *.js
 let g:jsx_ext_required = 0
@@ -276,9 +284,13 @@ set foldlevel=99
 let g:SimpylFold_docstring_preview=1
 nnoremap <Leader><Space> za
 
-" autowrap commit msgs, markdown
-au FileType gitcommit set tw=72
-au FileType md set tw=80
+" autowrap commit msgs
+au FileType gitcommit
+    \ set tw=72     |
+
+" autowrap markdown
+au FileType md
+    \ set tw=80     |
 
 " vim-markdown config
 let g:vim_markdown_folding_disabled=1
@@ -292,17 +304,16 @@ autocmd! User GoyoLeave Limelight!
 
 " ruby syntax for Vagrantfile
 au BufNewFile,BufRead Vagrantfile
-    \ set syntax=ruby
+    \ set syntax=ruby       |
 
 " PEP8-compliance
 au BufNewFile,BufRead *.py
-    \ set tabstop=4       |
-    \ set softtabstop=4   |
-    \ set shiftwidth=4    |
-    \ set textwidth=79    |
-    \ set expandtab       |
-    \ set autoindent      |
-    \ set fileformat=unix |
+    \ setlocal tabstop=4        |
+    \ setlocal softtabstop=4    |
+    \ setlocal shiftwidth=4     |
+    \ setlocal textwidth=79     |
+    \ setlocal expandtab        |
+    \ setlocal fileformat=unix  |
 
 let g:jedi#completions_command = "<C-n>"    " same as omnicomplete
 let g:jedi#use_tabs_not_buffers = 1         " tab out for easy nav
