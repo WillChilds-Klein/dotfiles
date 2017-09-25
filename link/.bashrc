@@ -24,5 +24,5 @@ function dotfiles() {
   $DOTFILES/bin/dotfiles "$@" && src
 }
 
-src
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+src

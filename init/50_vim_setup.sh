@@ -8,14 +8,14 @@ vim --version >/dev/null || return 1
 
 #  2. install xor update  Vundle via GitHub
 #     into directory ~/.vim/bundle/Vundle.vim
-if [ -d "$VUNDLE_DIR" ]; then
+if [[ -d "${VUNDLE_DIR}" && -d "${VUNDLE_DIR}/.git" ]]; then
     echo "updating Vundle!"
-    cd $VUNDLE_DIR
+    cd ${VUNDLE_DIR}
     git pull
     cd -
 else
-    git clone https://github.com/VundleVim/Vundle.vim.git $VUNDLE_DIR
-    echo "installing Vunldle into $VUNDLE_DIR"
+    git clone https://github.com/VundleVim/Vundle.vim.git ${VUNDLE_DIR}
+    echo "installing Vunldle into ${VUNDLE_DIR}"
 fi
 
 #  3. run shell command to make Vundle install all plugins:

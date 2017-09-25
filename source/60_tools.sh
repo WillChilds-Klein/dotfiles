@@ -1,8 +1,6 @@
 # ---------------------------------------------------------------------------- #
 # general tool application aliases
 # ---------------------------------------------------------------------------- #
-alias g='grep --color'
-alias p='ping 8.8.8.8'
 alias ='clear'
 
 function netinfo() {
@@ -27,19 +25,8 @@ if ! [[ -d ~/.tmux/plugins/tpm ]]; then
     echo "tpm repo cloned, hit <prefix>r then <prefix>I to install plugins!"
 fi
 
-# cd and list
-#function cdl () {
-    #cd $1 && tree --dirsfirst -aLpughDFiC 1
-#}
-
-# pretty json
-alias pretty-json="jq ."
-
 # show open ports
 alias ports='lsof -i -P | grep -i "listen"'
-
-# vim-hackernews
-alias hn='vim +HackerNews'
 
 # alias to correct previous (mistaken) command
 alias fuck='eval $(thefuck $(fc -ln -1))'
@@ -47,17 +34,13 @@ alias fuck='eval $(thefuck $(fc -ln -1))'
 # alias for grepping through all files in current dir
 alias lgrep='ls -al | grep -i'
 
+# venv aliases
 alias activate='. ./.venv/bin/activate'
 alias venv='virtualenv .venv && activate'
 
 #  src: http://unix.stackexchange.com/a/17308
 highlight () {
     perl -pe "s/$1/\e[1;31;43m$&\e[0m/g"
-}
-
-# alias for accessing libs section of man, including C libs
-function manc () {
-    man 2 $1 || man 3 $1 || echo "no man page for $1 found in sections 2,3";
 }
 
 # easy search for switch in man
@@ -79,11 +62,8 @@ function pdf-merge () {
 # .vimrc location
 export VIMRC="~/.vimrc"
 
-
 # print tmux colors
 alias tmux-colors='for i in {0..255} ; do printf "\x1b[38;5;${i}mcolour${i}\n"; done'
-# alias for launching tterm session
-alias tmux-tterm='tmux a -t tterm || tmux new -s tterm && tmux source-file ~/.tmux/tterm.conf'
 
 tx() {
     # if direnv is present, use it to execute tmux to avoid env variable mangling.
@@ -177,22 +157,4 @@ function n () {
     fi
     vim "${notes_dir}/${name}.md"
 }
-# ============================================================================ #
-
-
-
-is_osx || return $?
-
-# ---------------------------------------------------------------------------- #
-# AWS
-# ---------------------------------------------------------------------------- #
-# add aws bin directory to PATH
-export PATH=$PATH:/usr/local/aws/bin
-
-# set bash autocompletion
-complete -C '/usr/local/bin/aws_completer' aws
-
-# connect to zeus EC2 instance via ssh
-alias zeus='ssh -i ~/.aws/athena-zeus.pem ubuntu@ec2-52-11-189-255.us-west-2.compute.amazonaws.com'
-alias mzeus='mosh --ssh="ssh -i ~/.aws/athena-zeus.pem" ubuntu@ec2-52-11-189-255.us-west-2.compute.amazonaws.com'
 # ============================================================================ #

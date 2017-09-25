@@ -3,12 +3,6 @@
 # set vi editing mode for bash
 set -o vi
 
-# set directory location vars
-export CODE=$HOME/work/code
-export TOOLS=$CODE/tools
-export SCRIPTS=$DOTFILES/bin
-export GOPATH=$CODE/go
-
 # print path env var in easy to read format
 function ppath() {
     echo $PATH | sed 's/:/:\'$'\n/g'
@@ -63,9 +57,4 @@ function bash_arr_contains() {
     done
 
     return 1
-}
-
-function abs_filename() {
-  # $1 : relative filename
-    echo "$(cd "$(dirname "$1")" && pwd)/$(basename "$1")"
 }

@@ -1,39 +1,32 @@
 # Ubuntu-only stuff. Abort if not Ubuntu.
 is_ubuntu || return 1
 
-sudo apt update
-sudo apt dist-upgrade
+sudo add-apt-repository -y ppa:pi-rho/dev
+sudo apt-get update -y
+sudo apt-get upgrade -y
 
 # Install packages.
 packages=(
   build-essential
   cowsay
   git-core
+  gnupgp
   htop
-  id3tool
   libssl-dev
-  mercurial
+  mosh
   nmap
+  pass
   silversearcher-ag
-  sl
   telnet
+  tmux
   tree
+  vim-nox-py2
+  vim-python-jedi
 )
 
-packages=($(setdiff "${packages[*]}" "$(dpkg --get-selections | grep -v deinstall | awk '{print $1}')"))
-
-if (( ${#packages[@]} > 0 )); then
+if [[ ${#packages[@]} -gt 0 ]]; then
   e_header "Installing APT packages: ${packages[*]}"
   for package in "${packages[@]}"; do
-    sudo apt install -y "$package"
+    sudo apt-get install -y "$package"
   done
-fi
-
-# Install Git Extras
-if [[ ! "$(type -P git-extras)" ]]; then
-  e_header "Installing Git Extras"
-  (
-    cd $DOTFILES/vendor/git-extras &&
-    sudo make install
-  )
 fi

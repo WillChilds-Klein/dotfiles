@@ -88,6 +88,12 @@ Plugin 'tmhedberg/SimpylFold'
 " flake8, run with F7
 Plugin 'nvie/vim-flake8'
 
+" clojure
+Plugin 'tpope/vim-fireplace'
+
+" s-exps and paren matching
+Plugin 'vim-scripts/paredit.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -289,7 +295,7 @@ au FileType gitcommit
     \ set tw=72     |
 
 " autowrap markdown
-au FileType md
+autocmd BufRead,BufNewFile *.md
     \ set tw=80     |
 
 " vim-markdown config
