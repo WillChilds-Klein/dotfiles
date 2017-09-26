@@ -7,14 +7,18 @@ sudo apt-get upgrade -y
 
 # Install packages.
 packages=(
+  awscli
   build-essential
   cowsay
+  direnv
   git-core
   gnupgp
   htop
   libssl-dev
   mosh
   nmap
+  open-ssh
+  python-pip
   pass
   silversearcher-ag
   telnet
