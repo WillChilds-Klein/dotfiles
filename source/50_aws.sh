@@ -1,7 +1,7 @@
 alias srcaws='vim $DOTFILES/source/50_aws.sh && src aws'
 
 # don't source this file if aws cli isn't installed
-which aws &>/dev/null || exit 1
+which aws &>/dev/null || return 1
 
 aws_env() {
     # export AWS creds env vars from system-configured creds
