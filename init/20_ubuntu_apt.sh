@@ -18,12 +18,13 @@ packages=(
   mosh
   nmap
   open-ssh
-  python-pip
   pass
+  python-pip
   silversearcher-ag
   telnet
   tmux
   tree
+  urlview
   vim-nox-py2
   vim-python-jedi
 )
