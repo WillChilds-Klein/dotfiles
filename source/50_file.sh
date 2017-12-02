@@ -14,6 +14,7 @@ fi
 
 # aliases for `ls`
 alias la='ls -al'
+alias ll='ls -al'
 alias l='ls -al'
 
 # shorthand filesystem nav
