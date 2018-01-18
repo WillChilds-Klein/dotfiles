@@ -70,3 +70,6 @@ Desktop.ini
 
 # virtualenv
 .venv/
+
+# Intellij IDEA
+.idea/
