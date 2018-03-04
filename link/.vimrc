@@ -51,6 +51,9 @@ Plugin 'tpope/vim-surround'
 " repeat support for plugins
 Plugin 'tpope/vim-repeat'
 
+" git integration
+Plugin 'tpope/vim-fugitive'
+
 " HackerNews plugin
 Plugin 'ryanss/vim-hackernews'
 

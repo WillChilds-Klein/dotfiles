@@ -73,3 +73,7 @@ Desktop.ini
 
 # Intellij IDEA
 .idea/
+*.iml
+
+# Octave/Matlab data files
+*.mat
