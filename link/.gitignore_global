@@ -77,3 +77,6 @@ Desktop.ini
 
 # Octave/Matlab data files
 *.mat
+
+# Jupyter IPython notebook
+.ipynb_checkpoints/

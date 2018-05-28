@@ -12,6 +12,7 @@ recipes=(
   direnv
   git
   htop-osx
+  jupyter
   nmap
   ssh-copy-id
   tree
